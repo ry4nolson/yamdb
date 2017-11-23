@@ -1,0 +1,47 @@
+// Place all the styles related to the movies controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.poster { width:100%; }
+
+.movie { max-width:150px; }
+
+.hero-body { position:relative; }
+.hero-body:before { content:''; display:block; position:absolute; top:0; bottom:0; right:0; left:0; background:rgba(80,48,71, 0.75); }
+.hero-body > div { position:relative; z-index:1; }
+
+.year { opacity:.5; }
+
+.movie-poster { margin-top:-200px; border-bottom:1px solid transparent; }
+
+.movie-poster > img { display:block;box-shadow:0 0 10px #000; }
+
+.similar { margin-top:20px; }
+
+.movie-section { display:none; }
+.movie-section > div { margin-bottom:20px; }
+
+.details table { width:100%; }
+
+.credit .media-left {
+  min-height:65px;
+  width:50px;
+  background:#eee;
+}
+
+.credit p {
+  margin-bottom:0em !important;
+}
+
+@media screen and (max-width: 768px)
+{
+  .hero-body {
+    padding:1rem;
+  }
+  .hero {
+    height:250px !important;
+  }
+  .movie-poster {
+    margin-top:-125px;
+  }
+}

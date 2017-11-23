@@ -1,0 +1,15 @@
+<h1 class="is-size-1">Search results for: "<%= @q %>"</h1>
+
+
+<% @results["results"].each_slice(4) do |results| %>
+  <div class="">
+    <% results.each do |result| %>
+      <div class="">
+        <%= render partial: "shared/movieposter", locals: { movie: result, width: 154 } %>
+        <div>
+          <%= result.to_json %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

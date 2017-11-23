@@ -1,0 +1,34 @@
+
+
+<% if defined? @now_playing %>
+  <h3>In Theatres</h3>
+  <div class="movie-slider">
+    <% @now_playing['results'].each do |movie| %>
+      <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
+    <% end %>
+  </div>
+<% end %>
+
+
+<% if defined? @popular %>
+  <h3>Popular Movies</h3>
+  <div class="movie-slider">
+    <% @popular['results'].each do |movie| %>
+      <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  $(function(){
+    $(".movie-slider").bxSlider({
+        minSlides: 2,
+        maxSlides: 10,
+        moveSlides: 1,
+        mode: 'horizontal',
+        slideWidth: 150,
+        slideMargin: 20,
+        pager: false
+    });
+  })
+</script>

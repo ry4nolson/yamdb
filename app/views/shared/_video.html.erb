@@ -1,0 +1,6 @@
+<div class='embed-container'>
+  <% case video["site"] %>
+  <% when "YouTube" %>
+    <iframe src='https://www.youtube.com/embed/<%= video["key"] %>' frameborder='0' allowfullscreen></iframe>
+  <% end %>
+</div>

@@ -1,0 +1,71 @@
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        YAMdb
+      </a>
+      <div class="navbar-burger burger" data-target="navbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/movies">
+            Movies
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="/movies/popular">
+              Popular
+            </a>
+            <a class="navbar-item" href="/movies/now-playing">
+              Now Playing
+            </a>
+            <a class="navbar-item" href="/movies/new">
+              New
+            </a>
+            <a class="navbar-item" href="/movies/upcoming">
+              Upcoming
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <form action="/search" method="GET">
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" type="text" name="q" placeholder="Search...">
+              </div>
+              <div class="control">
+                <button class="button is-info">
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+
+  $(document).off("click", ".navbar-burger").on("click", ".navbar-burger", function(el){
+    var $el = el.currentTarget;
+    // Get the target from the "data-target" attribute
+    var target = $el.dataset.target;
+    var $target = document.getElementById(target);
+
+    // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+    //$($el).toggle('is-active');
+    $($target).toggleClass('is-active');
+  });
+</script>

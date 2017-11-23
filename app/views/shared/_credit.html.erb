@@ -1,0 +1,18 @@
+<div class="credit">
+  <a href="/person/<%= credit["id"] %>">
+  <div class="media">
+    <div class="media-left">
+      <%= image_tag "https://image.tmdb.org/t/p/w45#{credit["profile_path"]}" if credit["profile_path"] %>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p><strong><%= credit["name"] %></strong></p>
+        <p>
+          <%= credit["character"] %>
+          <%= credit["job"] %>
+        </p>
+      </div>
+    </div>
+  </div>
+  </a>
+</div>
