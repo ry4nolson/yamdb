@@ -115,11 +115,11 @@
               <% end %>
             </div>
           <% end %>
-          <% @images["posters"].each_slice(6) do |images| %>
+          <% @images["posters"].each_slice(3) do |images| %>
             <div class="columns">
               <% images.each do |image| %>
                 <div class="column">
-                  <%= image_tag "https://image.tmdb.org/t/p/w92/#{image["file_path"]}" %>
+                  <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
                 </div>
               <% end %>
             </div>
