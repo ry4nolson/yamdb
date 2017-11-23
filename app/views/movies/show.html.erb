@@ -43,11 +43,11 @@
     <div class="column">
       <div class="tabs is-fullwidth">
         <ul>
-          <li class="is-active" data-turbolinks=false><a href="#details">Details</a></li>
-          <li><a href="#cast" data-turbolinks=false>Cast</a></li>
-          <li><a href="#crew" data-turbolinks=false>Crew</a></li>
-          <li><a href="#media" data-turbolinks=false>Media</a></li>
-          <li><a href="#reviews" data-turbolinks=false>Reviews</a></li>
+          <li class="is-active"><a href="#details">Details</a></li>
+          <li><a href="#cast">Cast</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#reviews">Reviews</a></li>
         </ul>
       </div>
       <div id="details" class="movie-section">
@@ -105,8 +105,14 @@
         <% end %>
       </div>
       <div id="crew" class="movie-section">
-        <% @crew.each do |crew| %>
-          <%= render partial: "shared/credit", locals: { credit: crew } %>
+         <% @crew.each_slice(2) do |people| %>
+          <div class="columns">
+            <% people.each do |crew| %>
+              <div class="column">
+                <%= render partial: "shared/credit", locals: { credit: crew } %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
       <div id="media" class="movie-section">
@@ -153,10 +159,10 @@
     $(".movie-section").hide();
     $($link.attr("href")).show();
     
-    if (history.pushState)
-      history.pushState(null, null, $link.attr("href"))
-    else
-      location.hash = $link.attr("href");
+    // if (history.pushState)
+    //   history.pushState(null, null, $link.attr("href"))
+    // else
+    //   location.hash = $link.attr("href");
     
     e.preventDefault();
   });

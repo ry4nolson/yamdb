@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
+  get 'person/:id', to: "person#show"
+
+  get '/', to: 'welcome#home'
+  get '/about', to: 'welcome#about'
+  get '/credits', to: 'welcome#credits'
+  
   get 'tv', to: 'tv#index'
+  get 'tv/popular', to: 'tv#popular'
+  get 'tv/on_the_air', to: 'tv#on_the_air'
+  get 'tv/top_rated', to: 'tv#top_rated'
+  get 'tv/:id', to: 'tv#show'
 
 
   get 'movies', to: 'movies#index'
   get 'movies/popular', to: 'movies#popular'
   get 'movies/now_playing', to: 'movies#now_playing'
   get 'movies/:id', to: "movies#show"
-  
-  root 'welcome#home'
-  
-  get '/about', to: 'welcome#about'
   
   get 'search/index'
   get '/search', to: "search#index"
