@@ -19,12 +19,39 @@
         <% end %>
       <% end %>
     </div>
+    
+    <h3>Popular TV Shows</h3>
+    <div class="movie-slider">
+      <% @popular_tv["results"].each_slice(4) do |shows| %>
+        <% shows.each do |show| %>
+          <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <h3>TV Shows On The Air</h3>
+    <div class="movie-slider">
+      <% @on_the_air["results"].each_slice(4) do |shows| %>
+        <% shows.each do |show| %>
+          <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="column">
-    <h3>/r/Movies news</h3>
-    <% @posts["data"]["children"][0...10].each do |item| %>
+    <h3 class="is-uppercase">/r/Movies news</h3>
+    <hr>
+    <% @rmovies["data"]["children"][0...5].each do |item| %>
         <div class="news">
-          <div class="news-title"><a href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-title"><a data-lity href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
+        </div>
+    <% end %>
+    <h3 class="is-uppercase">/r/TV news</h3>
+    <hr>
+    <% @rtelevision["data"]["children"][0...5].each do |item| %>
+        <div class="news">
+          <div class="news-title"><a data-lity href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
           <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
         </div>
     <% end %>

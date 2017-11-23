@@ -1,5 +1,5 @@
 module TvHelper
-  def popular(render = true) 
+  def popular_tv(render = true) 
     @popular = JSON.parse($tmdb["tv/popular?api_key=#{$key}"].get)
     render 'index' if render
     

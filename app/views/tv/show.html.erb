@@ -1,0 +1,173 @@
+<% content_for :hero do %>
+<section class="hero is-success">
+  <div class="hero-body" style="background:url(<%= @hero %>); background-size:cover;">
+    <div class="container">
+      <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
+        <%= @show["name"] %>
+      </h1>
+      <h2 class="subtitle"><%= @show["tagline"] %></h2>
+    </div>
+  </div>
+</section>
+<% end %>
+
+<section class="movie-info">
+  <div class="columns is-mobile is-centered is-hidden-tablet">
+      <div class="column is-half movie-poster">
+        <a href="<%= @posterfull %>" data-lity>
+          <img src="<%= @poster %>" alt="<%= @show['title'] %>">
+        </a>
+      </div>
+  </div>
+  <div class="columns">
+    <div class="column is-one-third is-hidden-mobile">
+      <div class="movie-poster">
+        <a href="<%= @posterfull %>" data-lity>
+          <img src="<%= @poster %>" alt="<%= @show['title'] %>">
+        </a>
+      </div>
+      <div class="similar">
+        <h4 class="is-size-4">Similar Shows</h4>
+        <% @similar["results"].each_slice(4) do |similars| %>
+          <div class="columns">
+            <% similars.each do |show| %>
+              <div class="column">
+                <%= render partial: "shared/tvposter", locals: { show: show, width: 92 } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>  
+    </div>
+    <div class="column">
+      <div class="tabs is-fullwidth">
+        <ul>
+          <li class="is-active"><a href="#details">Details</a></li>
+          <li><a href="#cast">Cast</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#media">Media</a></li>
+        </ul>
+      </div>
+      <div id="details" class="movie-section">
+        <div class="rating">
+          <span class="is-size-3"><%= @show["vote_average"] %></span> <span class="is-size-4">/ 10</span>
+        </div>
+        <div class="genres">
+          <% @show["genres"].each do |genre| %>
+            <span class="tag"><%= genre["name"] %></span>
+          <% end %>
+        </div>
+        <div class="overview">
+          <p><%= @show["overview"] %></p>
+        </div>
+        <div class="details">
+          <table>
+            <% if !@show["homepage"].empty? %>
+            <tr>
+              <th>Homepage</th>
+              <td><a href="<%= @show["homepage"] %>" target="_blank"><%= @show["homepage"] %></a></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th>First Air Date</th>
+              <td><%= @show["first_air_date"] %></td>
+            </tr>
+            <tr>
+              <th>Last Air Date</th>
+              <td><%= @show["last_air_date"] %></td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="videos">
+          <% @videos["results"].each_slice(2) do |videos| %>
+            <div class="columns">
+              <% videos.each do |video| %>
+                <div class="column">
+                  <%= render partial: "shared/video", locals: { video: video } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="cast" class="movie-section">
+        <% @cast.each_slice(2) do |people| %>
+          <div class="columns">
+            <% people.each do |cast| %>
+              <div class="column">
+                <%= render partial: "shared/credit", locals: { credit: cast } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div id="crew" class="movie-section">
+         <% @crew.each_slice(2) do |people| %>
+          <div class="columns">
+            <% people.each do |crew| %>
+              <div class="column">
+                <%= render partial: "shared/credit", locals: { credit: crew } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div id="media" class="movie-section">
+        
+        <div class="backdrops">
+          <% @images["backdrops"].each_slice(2) do |images| %>
+            <div class="columns">
+              <% images.each do |image| %>
+                <div class="column">
+                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                    <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
+                  </a>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <% @images["posters"].each_slice(3) do |images| %>
+            <div class="columns">
+              <% images.each do |image| %>
+                <div class="column">
+                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                    <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                  </a>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).on("click", ".tabs a", function(e){
+    $link = $(e.currentTarget);
+    $link.closest("ul").find("li").removeClass("is-active");
+    $link.parent().addClass("is-active");
+    $(".movie-section").hide();
+    $($link.attr("href")).show();
+    
+    // if (history.pushState)
+    //   history.pushState(null, null, $link.attr("href"))
+    // else
+    //   location.hash = $link.attr("href");
+    
+    e.preventDefault();
+  });
+  $(function(){
+    if (location.hash){
+      $(".tabs a[href=\\" + location.hash +"]").click();
+    } else {
+      $(".tabs a:first").click();
+    }
+  })
+</script>
+
+<pre>
+  <%= JSON.pretty_generate @show %>
+</pre>
