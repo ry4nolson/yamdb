@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'search/index'
 
   get 'movies/popular', to: 'movies#popular'
+  get 'movies/now_playing', to: 'movies#now_playing'
   
   resources :movies
   
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'movies#index'
+  root 'welcome#home'
   
   get '/about', to: 'welcome#about'
   

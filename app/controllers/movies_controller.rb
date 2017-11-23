@@ -1,7 +1,8 @@
 require 'date'
 
 class MoviesController < ApplicationController
-
+  include MoviesHelper
+  
   def index
     popular(false)
     now_playing(false);
@@ -25,15 +26,6 @@ class MoviesController < ApplicationController
     @images = JSON.parse($tmdb["movie/#{id}/images?api_key=#{$key}"].get)
   end
   
-  def popular(render = true) 
-    @popular = JSON.parse($tmdb["movie/popular?api_key=#{$key}"].get)
-    render 'index' if render
-  end
-  
-  def now_playing(render = true) 
-    @now_playing = JSON.parse($tmdb["movie/now_playing?api_key=#{$key}"].get)
-    render 'index' if render
-  end
   
   def get_year(date)
     Date.parse(date).year

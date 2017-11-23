@@ -2,10 +2,11 @@ require 'json'
 
 class WelcomeController < ApplicationController
   
+  include MoviesHelper
+  
   def home
-    @response = RestClient.get("https://www.texasbeardcompany.com/api/v1/products", {"x-ac-auth-token" => "2da54d6af991334f1fe97602731899ac"})
-    
-    @products = JSON.parse(@response.body);
+    @popular = popular(false)
+    @posts = JSON.parse(RestClient.get("https://www.reddit.com/r/movies/hot.json"))
   end
   
   def about

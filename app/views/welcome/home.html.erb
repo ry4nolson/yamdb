@@ -1,7 +1,37 @@
-<h1>Home</h1>
 
-<%= link_to 'About', welcome_about_path %>
+<div class="columns">
+  <div class="column is-three-quarters">
+    <h3>Popluar Movies</h3>
+    <div class="movie-slider">
+      <% @popular["results"].each_slice(4) do |movies| %>
+        <% movies.each do |movie| %>
+          <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="column">
+    <h3>/r/Movies news</h3>
+    <% @posts["data"]["children"][0...10].each do |item| %>
+        <div class="news">
+          <div class="news-title"><a href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
+        </div>
+    <% end %>
+  </div>
+</div>
 
-<% @products['products'].each do |product|  %>
-  <%= product['id'] %>
-<% end %>
+
+<script>
+  $(function(){
+    $(".movie-slider").bxSlider({
+        minSlides: 2,
+        maxSlides: 10,
+        moveSlides: 1,
+        mode: 'horizontal',
+        slideWidth: 150,
+        slideMargin: 20,
+        pager: false
+    });
+  })
+</script>

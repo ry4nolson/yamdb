@@ -27,6 +27,7 @@ gem 'json'
 gem 'dotenv'
 gem 'font-awesome-sass'
 gem 'redcarpet'
+gem 'simple-rss'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
