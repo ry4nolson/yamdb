@@ -6,7 +6,7 @@
 
 .movie { max-width:150px; }
 
-.hero-body { position:relative; }
+.hero-body { position:relative; padding-left:0 !important; }
 .hero-body:before { content:''; display:block; position:absolute; top:0; bottom:0; right:0; left:0; background:rgba(80,48,71, 0.75); }
 .hero-body > div { position:relative; z-index:1; }
 
@@ -14,7 +14,7 @@
 
 .movie-poster { margin-top:-200px; border-bottom:1px solid transparent; }
 
-.movie-poster > img { display:block;box-shadow:0 0 10px #000; }
+.movie-poster > a > img { display:block;box-shadow:0 0 10px #000; }
 
 .similar { margin-top:20px; }
 

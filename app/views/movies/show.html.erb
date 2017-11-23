@@ -1,7 +1,7 @@
 <% content_for :hero do %>
 <section class="hero is-success">
   <div class="hero-body" style="background:url(<%= @hero %>); background-size:cover;">
-    <div>
+    <div class="container">
       <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
         <%= @movie["title"] %>
         <span class="has-text-weight-light year">(<%= get_year @movie["release_date"] %>)</span>
@@ -15,13 +15,17 @@
 <section class="movie-info">
   <div class="columns is-mobile is-centered is-hidden-tablet">
       <div class="column is-half movie-poster">
-        <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
+        <a href="<%= @posterfull %>" data-lity>
+          <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
+        </a>
       </div>
   </div>
   <div class="columns">
     <div class="column is-one-third is-hidden-mobile">
       <div class="movie-poster">
-        <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
+        <a href="<%= @posterfull %>" data-lity>
+          <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
+        </a>
       </div>
       <div class="similar">
         <h4 class="is-size-4">Similar Movies</h4>
@@ -60,10 +64,12 @@
         </div>
         <div class="details">
           <table>
+            <% if !@movie["homepage"].empty? %>
             <tr>
               <th>Homepage</th>
               <td><a href="<%= @movie["homepage"] %>" target="_blank"><%= @movie["homepage"] %></a></td>
             </tr>
+            <% end %>
             <tr>
               <th>Release Date</th>
               <td><%= @movie["release_date"] %></td>
@@ -110,7 +116,9 @@
             <div class="columns">
               <% images.each do |image| %>
                 <div class="column">
-                  <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
+                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                    <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
+                  </a>
                 </div>
               <% end %>
             </div>
@@ -119,7 +127,9 @@
             <div class="columns">
               <% images.each do |image| %>
                 <div class="column">
-                  <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                    <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                  </a>
                 </div>
               <% end %>
             </div>

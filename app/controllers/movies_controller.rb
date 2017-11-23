@@ -14,6 +14,7 @@ class MoviesController < ApplicationController
   
     @hero = "https://image.tmdb.org/t/p/w1280/#{@movie['backdrop_path']}"
     @poster = "https://image.tmdb.org/t/p/w500/#{@movie['poster_path']}"
+    @posterfull = "https://image.tmdb.org/t/p/original/#{@movie['poster_path']}"
     
     credits = JSON.parse($tmdb["movie/#{id}/credits?api_key=#{$key}"].get)
     @cast = credits["cast"]
