@@ -9,6 +9,15 @@
         <% end %>
       <% end %>
     </div>
+    
+    <h3>In Theatres Now</h3>
+    <div class="movie-slider">
+      <% @now_playing["results"].each_slice(4) do |movies| %>
+        <% movies.each do |movie| %>
+          <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="column">
     <h3>/r/Movies news</h3>
