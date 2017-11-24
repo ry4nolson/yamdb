@@ -19,6 +19,21 @@
   </div>
 <% end %>
 
+<% if @paging %>
+<script>
+  $(".movie").addClass("column").each(function(i, el){
+    $el = $(el);
+    
+    if (i % 5 == 0)
+      $(".movie-slider").append("<div class='columns is-centered'></div>");
+      
+    $el.appendTo(".movie-slider .columns:last");
+    
+  });
+</script>
+
+<% else %>
+
 <script>
   $(function(){
     $(".movie-slider").bxSlider({
@@ -32,3 +47,5 @@
     });
   })
 </script>
+
+<% end %>

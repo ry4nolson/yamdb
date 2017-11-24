@@ -96,12 +96,7 @@
     $link.parent().addClass("is-active");
     $(".movie-section").hide();
     $($link.attr("href")).show();
-    
-    // if (history.pushState)
-    //   history.pushState(null, null, $link.attr("href"))
-    // else
-    //   location.hash = $link.attr("href");
-    
+
     e.preventDefault();
   });
   $(function(){
@@ -112,7 +107,3 @@
     }
   })
 </script>
-
-<pre>
-  <%= JSON.pretty_generate @person %>
-</pre>

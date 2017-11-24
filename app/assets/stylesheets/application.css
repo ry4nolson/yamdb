@@ -58,3 +58,16 @@ footer { margin-top:30px; }
   display: block;
   margin-bottom:10px;
 }
+
+.no-image {
+  height:220px;
+  background:#eee;
+  text-align:center;
+  color:#666;
+  padding-top:30px;
+}
+.no-image i {
+  font-size:75px;
+  display:block;
+  margin:0 auto 30px;
+}

@@ -1,6 +1,13 @@
 
   <div class="movie">
     <a href="/tv/<%= show['id'] %>">
-      <img alt="<%= show['title'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= show['poster_path'] %>" class="poster">
+      <% if !show["poster_path"].nil? %>
+      <img alt="<%= show['name'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= show['poster_path'] %>" class="poster">
+      <% else %>
+      <div class="no-image">
+        <i class="fa fa-film" aria-hidden="true"></i>
+        <%= show['name'] %>
+      </div>
+      <% end %>
     </a>
   </div>

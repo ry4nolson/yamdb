@@ -65,8 +65,10 @@
         <div class="top-cast">
           <h3>Top Billed Cast</h3>
           <div class="columns">
-            <% @cast[1..5].each do |cast| %>
-              <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
+            <% @cast[0..5].each do |cast| %>
+              <div class="column is-one-third-mobile">
+                <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -91,7 +93,7 @@
         
         <div class="videos">
           <% @videos["results"].each_slice(2) do |videos| %>
-            <div class="columns">
+            <div class="columns is-mobile">
               <% videos.each do |video| %>
                 <div class="column">
                   <%= render partial: "shared/video", locals: { video: video } %>
@@ -104,7 +106,7 @@
       <div id="cast" class="movie-section">
         <div>
           <% @cast.each_slice(2) do |people| %>
-            <div class="columns">
+            <div class="columns is-mobile">
               <% people.each do |cast| %>
                 <div class="column">
                   <%= render partial: "shared/credit", locals: { credit: cast } %>
@@ -117,7 +119,7 @@
       <div id="crew" class="movie-section">
         <div>
           <% @crew.each_slice(2) do |people| %>
-            <div class="columns">
+            <div class="columns is-mobile">
               <% people.each do |crew| %>
                 <div class="column">
                   <%= render partial: "shared/credit", locals: { credit: crew } %>
@@ -131,7 +133,7 @@
         
         <div class="backdrops">
           <% @images["backdrops"].each_slice(2) do |images| %>
-            <div class="columns">
+            <div class="columns is-mobile">
               <% images.each do |image| %>
                 <div class="column">
                   <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
@@ -142,7 +144,7 @@
             </div>
           <% end %>
           <% @images["posters"].each_slice(3) do |images| %>
-            <div class="columns">
+            <div class="columns is-mobile">
               <% images.each do |image| %>
                 <div class="column">
                   <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>

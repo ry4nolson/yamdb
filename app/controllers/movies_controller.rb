@@ -19,7 +19,6 @@ class MoviesController < ApplicationController
     @posterfull = "https://image.tmdb.org/t/p/original/#{@movie['poster_path']}"
     
     credits = @movie["credits"]
-    #credits = JSON.parse($tmdb["movie/#{id}/credits?api_key=#{$key}"].get)
     @cast = credits["cast"]
     @crew = credits["crew"]
     
@@ -27,11 +26,6 @@ class MoviesController < ApplicationController
     @videos = @movie["videos"]
     @similar = @movie["similar"]
     @images = @movie["images"]
-    #@reviews = JSON.parse($tmdb["movie/#{id}/reviews?api_key=#{$key}"].get)
-    #@videos = JSON.parse($tmdb["movie/#{id}/videos?api_key=#{$key}"].get)
-    #@similar = JSON.parse($tmdb["movie/#{id}/similar?api_key=#{$key}"].get)
-    
-    #@images = JSON.parse($tmdb["movie/#{id}/images?api_key=#{$key}"].get)
   end
   
   
