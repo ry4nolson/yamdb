@@ -1,2 +1,118 @@
-<h1>Person#show</h1>
-<p>Find me in app/views/person/show.html.erb</p>
+<% content_for :hero do %>
+<section class="hero is-success">
+  <div class="hero-body" style="background:url(<%= @portrait %>); background-size:cover;">
+    <div class="container">
+      <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
+        <%= @person["name"] %>
+      </h1>
+    </div>
+  </div>
+</section>
+<% end %>
+
+<section class="movie-info">
+  <div class="columns is-mobile is-centered is-hidden-tablet">
+      <div class="column is-half movie-poster">
+        <a href="<%= @portraitfull %>" data-lity>
+          <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
+        </a>
+      </div>
+  </div>
+  <div class="columns">
+    <div class="column is-one-third is-hidden-mobile">
+      <div class="movie-poster">
+        <a href="<%= @portraitfull %>" data-lity>
+          <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
+        </a>
+      </div>
+      <div class="similar">
+        <h4 class="is-size-4">Similar Shows</h4>
+        
+      </div>  
+    </div>
+    <div class="column">
+      <div class="tabs is-fullwidth">
+        <ul>
+          <li class="is-active"><a href="#details">Details</a></li>
+          <li><a href="#cast">Cast</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#media">Media</a></li>
+        </ul>
+      </div>
+      <div id="details" class="movie-section">
+        <div class="overview">
+          <p><%= @person["biography"] %></p>
+        </div>
+        <div class="details">
+          <table>
+            <% if !@person["homepage"].nil? %>
+            <tr>
+              <th>Homepage</th>
+              <td><a href="<%= @person["homepage"] %>" target="_blank"><%= @person["homepage"] %></a></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th>Birth Location</th>
+              <td><%= @person["place_of_birth"] %></td>
+            </tr>
+            <tr>
+              <th>Born</th>
+              <td><%= @person["birthday"] %></td>
+            </tr>
+            <% if !@person["deathday"].nil? %>
+            <tr>
+              <th>Died</th>
+              <td><%= @person["deathday"] %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+        
+      </div>
+      <div id="media" class="movie-section">
+        
+        <div class="backdrops">
+          <% @images["profiles"].each_slice(3) do |images| %>
+            <div class="columns">
+              <% images.each do |image| %>
+                <div class="column">
+                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                    <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                  </a>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).on("click", ".tabs a", function(e){
+    $link = $(e.currentTarget);
+    $link.closest("ul").find("li").removeClass("is-active");
+    $link.parent().addClass("is-active");
+    $(".movie-section").hide();
+    $($link.attr("href")).show();
+    
+    // if (history.pushState)
+    //   history.pushState(null, null, $link.attr("href"))
+    // else
+    //   location.hash = $link.attr("href");
+    
+    e.preventDefault();
+  });
+  $(function(){
+    if (location.hash){
+      $(".tabs a[href=\\" + location.hash +"]").click();
+    } else {
+      $(".tabs a:first").click();
+    }
+  })
+</script>
+
+<pre>
+  <%= JSON.pretty_generate @person %>
+</pre>

@@ -1,6 +1,6 @@
 
   <div class="movie">
-    <a href="/movies/<%= movie['id'] %>">
+    <a href="/movies/<%= movie['id'] %>-<%= movie['title'].parameterize %>">
       <img alt="<%= movie['title'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= movie['poster_path'] %>" class="poster">
     </a>
   </div>

@@ -62,6 +62,14 @@
         <div class="overview">
           <p><%= @movie["overview"] %></p>
         </div>
+        <div class="top-cast">
+          <h3>Top Billed Cast</h3>
+          <div class="columns">
+            <% @cast[1..5].each do |cast| %>
+              <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
+            <% end %>
+          </div>
+        </div>
         <div class="details">
           <table>
             <% if !@movie["homepage"].empty? %>
@@ -94,26 +102,30 @@
         </div>
       </div>
       <div id="cast" class="movie-section">
-        <% @cast.each_slice(2) do |people| %>
-          <div class="columns">
-            <% people.each do |cast| %>
-              <div class="column">
-                <%= render partial: "shared/credit", locals: { credit: cast } %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <div>
+          <% @cast.each_slice(2) do |people| %>
+            <div class="columns">
+              <% people.each do |cast| %>
+                <div class="column">
+                  <%= render partial: "shared/credit", locals: { credit: cast } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div id="crew" class="movie-section">
-         <% @crew.each_slice(2) do |people| %>
-          <div class="columns">
-            <% people.each do |crew| %>
-              <div class="column">
-                <%= render partial: "shared/credit", locals: { credit: crew } %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
+        <div>
+          <% @crew.each_slice(2) do |people| %>
+            <div class="columns">
+              <% people.each do |crew| %>
+                <div class="column">
+                  <%= render partial: "shared/credit", locals: { credit: crew } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <div id="media" class="movie-section">
         

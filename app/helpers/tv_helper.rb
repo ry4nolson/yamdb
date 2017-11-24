@@ -1,9 +1,9 @@
 module TvHelper
   def popular_tv(render = true) 
-    @popular = JSON.parse($tmdb["tv/popular?api_key=#{$key}"].get)
+    @popular_tv = JSON.parse($tmdb["tv/popular?api_key=#{$key}"].get)
     render 'index' if render
     
-    @popular
+    @popular_tv
   end
   
   def on_the_air(render = true) 
@@ -12,9 +12,9 @@ module TvHelper
     @on_the_air
   end
   
-  def top_rated(render = true) 
-    @top_rated = JSON.parse($tmdb["tv/top_rated?api_key=#{$key}"].get)
+  def top_rated_tv(render = true) 
+    @top_rated_tv = JSON.parse($tmdb["tv/top_rated?api_key=#{$key}"].get)
     render 'index' if render
-    @top_rated
+    @top_rated_tv
   end
 end
