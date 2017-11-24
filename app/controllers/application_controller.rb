@@ -1,4 +1,3 @@
-require 'facebook_wall'
 require 'rest-client'
 require 'json'
 require 'dotenv'
