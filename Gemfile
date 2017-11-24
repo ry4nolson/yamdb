@@ -28,6 +28,9 @@ gem 'font-awesome-sass'
 gem 'redcarpet'
 gem 'simple-rss'
 
+# can't figure out how to get rid of this without heroku crashing
+gem 'pg'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
