@@ -95,7 +95,7 @@
           <% @videos["results"].each_slice(2) do |videos| %>
             <div class="columns is-mobile">
               <% videos.each do |video| %>
-                <div class="column">
+                <div class="column is-half">
                   <%= render partial: "shared/video", locals: { video: video } %>
                 </div>
               <% end %>

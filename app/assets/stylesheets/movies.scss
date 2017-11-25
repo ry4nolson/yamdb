@@ -38,6 +38,22 @@
 .credit p {
   margin-bottom:0em !important;
 }
+.youtube-video {
+    display: block;
+    position: absolute;
+    height: 100%;
+}
+
+.youtube-video i {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    margin: -25px;
+    color:#fff;
+    opacity:0.75;
+}
 
 @media screen and (max-width: 768px)
 {
