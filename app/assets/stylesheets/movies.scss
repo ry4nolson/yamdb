@@ -7,7 +7,13 @@
 .movie { max-width:150px; }
 
 .hero-body { position:relative; padding-left:0 !important; }
-.hero-body:before { content:''; display:block; position:absolute; top:0; bottom:0; right:0; left:0; background:rgba(80,48,71, 0.75); }
+.hero-body:before { 
+  content:''; display:block; position:absolute; top:0; bottom:0; right:0; left:0;
+  background: -moz-linear-gradient(top, rgba(80,48,71,0.75) 0%, rgba(80,48,71,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(80,48,71,0.75) 0%,rgba(80,48,71,0) 100%);
+  background: linear-gradient(to bottom, rgba(80,48,71,0.75) 0%,rgba(80,48,71,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf503047', endColorstr='#00503047',GradientType=0 );
+}
 .hero-body > div { position:relative; z-index:1; }
 
 .year { opacity:.5; }

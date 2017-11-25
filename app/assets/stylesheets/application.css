@@ -24,11 +24,11 @@
 }
 .hero img { width:100%; }
 
-.navbar { background:#DC602E; border-bottom:2px solid #503047; }
-.navbar, .navbar a { color:#fff; }
+.navbar { border-bottom:2px solid #DC602E; }
+.navbar, .navbar a { color:#503047; }
 .navbar a:hover { color:#503047; }
 .navbar-link:after { border-color:#503047; }
-.navbar-dropdown a, .navbar-menu.is-active a { color:#100860; }
+.navbar-dropdown a, .navbar-menu.is-active a { color:#503047; }
 
 .bx-wrapper { box-shadow:none; border:none; }
 
