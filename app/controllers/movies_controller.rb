@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
   
   
   def get_year(date)
-    Date.parse(date).year
+    Date.parse(date).year if !date.empty?
   end
   
   def format_time(length)

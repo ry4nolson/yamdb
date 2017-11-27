@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.movie-info { margin-top:-125px; }
 .poster { width:100%; }
 
 .movie { max-width:150px; }
 
-.hero-body { position:relative; padding-left:0 !important; }
+.hero-body { position:relative; padding-left:0 !important; padding-right:0 !important; }
 .hero-body:before { 
   content:''; display:block; position:absolute; top:0; bottom:0; right:0; left:0;
-  background: -moz-linear-gradient(top, rgba(80,48,71,0.75) 0%, rgba(80,48,71,0) 100%);
-  background: -webkit-linear-gradient(top, rgba(80,48,71,0.75) 0%,rgba(80,48,71,0) 100%);
-  background: linear-gradient(to bottom, rgba(80,48,71,0.75) 0%,rgba(80,48,71,0) 100%);
+  background: -moz-linear-gradient(top, rgba(80,48,71,0.75) 0%, rgba(255,255,255,1) 100%);
+  background: -webkit-linear-gradient(top, rgba(80,48,71,0.75) 0%,rgba(255,255,255,1) 100%);
+  background: linear-gradient(to bottom, rgba(80,48,71,0.75) 0%,rgba(255,255,255,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf503047', endColorstr='#00503047',GradientType=0 );
 }
 .hero-body > div { position:relative; z-index:1; }
@@ -20,7 +21,7 @@
 
 .movie-poster { margin-top:-200px; border-bottom:1px solid transparent; }
 
-.movie-poster > a > img { display:block;box-shadow:0 0 10px #000; }
+.movie-poster > a > img { display:block;box-shadow:0 0 10px #000; max-width:100%; }
 
 .similar { margin-top:20px; }
 
@@ -66,4 +67,5 @@
   .movie-poster {
     margin-top:-125px;
   }
+  .movie-info { margin-top:0; }
 }

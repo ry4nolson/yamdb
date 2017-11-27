@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   get 'search/index'
   get '/search', to: "search#index"
+  get '/search-autocomplete', to: "search#autocomplete"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

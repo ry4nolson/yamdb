@@ -53,26 +53,21 @@
           </div>
         </div>
       </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <form action="/search" method="GET">
-            <div class="field has-addons">
-              <div class="control">
-                <input class="input" type="text" name="q" placeholder="Search...">
-              </div>
-              <div class="control">
-                <button class="button is-info">
-                  Search
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 </nav>
+<div class="container">
+  <div class="search">
+    <form action="/search" method="GET">
+      <input class="input" type="text" name="q" placeholder="Find Movies, TV Shows, People...">
+      <button class="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+
 <script>
 
   $(document).off("click", ".navbar-burger").on("click", ".navbar-burger", function(el){
@@ -85,4 +80,33 @@
     //$($el).toggle('is-active');
     $($target).toggleClass('is-active');
   });
+  
+  $(document).on("click", ".search button", function(){
+    if ($(".search input").val() === "")
+      return false;
+  });
+  
+  var options = {
+    url: function(phrase) { 
+      return "/search-autocomplete?q=" + phrase;    
+    },
+    getValue: function(result){
+      return (result.name || result.title);
+    },
+    template: {
+      type: "custom",
+      method: function(value, result)  {
+        var route = result.media_type;
+        return "<a href=/" + route + "/" + result.id + "><em>" +  result.media_type + "</em> - " + value + "</a>";
+      }
+    },
+    ajaxSettings: {
+        dataType: "json"
+    },
+    requestDelay: 200
+};
+
+$(".search input").easyAutocomplete(options);
+  
+  
 </script>

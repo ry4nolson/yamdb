@@ -1,4 +1,6 @@
-
+<% content_for :title do 
+  "Movies"
+end %>
 
 <% if defined? @now_playing %>
   <h3>In Theatres</h3>
@@ -21,13 +23,13 @@
 
 <% if @paging %>
 <script>
-  $(".movie").addClass("column").each(function(i, el){
+  $(".movie").addClass("col-sm").each(function(i, el){
     $el = $(el);
     
     if (i % 5 == 0)
-      $(".movie-slider").append("<div class='columns is-centered'></div>");
+      $(".movie-slider").append("<div class='row is-centered'></div>");
       
-    $el.appendTo(".movie-slider .columns:last");
+    $el.appendTo(".movie-slider .row:last");
     
   });
 </script>

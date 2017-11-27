@@ -1,3 +1,7 @@
+<% content_for :title do 
+  @person["name"]
+end %>
+
 <% content_for :hero do %>
 <section class="hero is-success">
   <div class="hero-body" style="background:url(<%= @portrait %>); background-size:cover;">
@@ -11,26 +15,22 @@
 <% end %>
 
 <section class="movie-info">
-  <div class="columns is-mobile is-centered is-hidden-tablet">
-      <div class="column is-half movie-poster">
+  <div class="row justify-content-center is-hidden-tablet">
+      <div class="col-6 is-half movie-poster">
         <a href="<%= @portraitfull %>" data-lity>
           <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
         </a>
       </div>
   </div>
-  <div class="columns">
-    <div class="column is-one-third is-hidden-mobile">
-      <div class="movie-poster">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="movie-poster is-hidden-mobile">
         <a href="<%= @portraitfull %>" data-lity>
           <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
         </a>
-      </div>
-      <div class="similar">
-        <h4 class="is-size-4">Similar Shows</h4>
-        
-      </div>  
+      </div> 
     </div>
-    <div class="column">
+    <div class="col-sm">
       <div class="tabs is-fullwidth">
         <ul>
           <li class="is-active"><a href="#details">Details</a></li>
@@ -73,9 +73,9 @@
         
         <div class="backdrops">
           <% @images["profiles"].each_slice(3) do |images| %>
-            <div class="columns">
+            <div class="row">
               <% images.each do |image| %>
-                <div class="column">
+                <div class="col-sm">
                   <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
                     <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
                   </a>

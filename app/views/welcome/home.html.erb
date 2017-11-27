@@ -1,7 +1,7 @@
 
 <br>
-<div class="columns">
-  <div class="column is-three-quarters">
+<div class="row">
+  <div class="col-sm is-three-quarters">
     <h3>Popluar Movies</h3>
     <div class="movie-slider">
       <% @popular["results"].each_slice(4) do |movies| %>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
   </div>
-  <div class="column">
+  <div class="col-sm">
     <h3 class="is-uppercase">/r/Movies news</h3>
     <hr>
     <% @rmovies["data"]["children"][0...5].each do |item| %>

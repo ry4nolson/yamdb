@@ -1,27 +1,35 @@
+<% content_for :title do 
+  @movie["title"]
+end %>
+
 <% content_for :hero do %>
 <section class="hero is-success">
   <div class="hero-body" style="background:url(<%= @hero %>); background-size:cover;">
     <div class="container">
-      <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
-        <%= @movie["title"] %>
-        <span class="has-text-weight-light year">(<%= get_year @movie["release_date"] %>)</span>
-      </h1>
-      <h2 class="subtitle"><%= @movie["tagline"] %></h2>
+      <div class="row">
+        <div class="col">
+          <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
+            <%= @movie["title"] %>
+            <span class="has-text-weight-light year"><%= get_year @movie["release_date"] %></span>
+          </h1>
+          <h2 class="subtitle"><%= @movie["tagline"] %></h2>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 <% end %>
 
 <section class="movie-info">
-  <div class="columns is-mobile is-centered is-hidden-tablet">
-      <div class="column is-half movie-poster">
+  <div class="row justify-content-center is-hidden-tablet">
+      <div class="col-6 movie-poster">
         <a href="<%= @posterfull %>" data-lity>
           <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
         </a>
       </div>
   </div>
-  <div class="columns">
-    <div class="column is-one-third is-hidden-mobile">
+  <div class="row">
+    <div class="col-sm-4 is-hidden-mobile">
       <div class="movie-poster">
         <a href="<%= @posterfull %>" data-lity>
           <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
@@ -29,10 +37,10 @@
       </div>
       <div class="similar">
         <h4 class="is-size-4">Similar Movies</h4>
-        <% @similar["results"].each_slice(4) do |similars| %>
-          <div class="columns">
+        <% @similar["results"].take(12).each_slice(3) do |similars| %>
+          <div class="row">
             <% similars.each do |movie| %>
-              <div class="column">
+              <div class="col-sm-4">
                 <%= render partial: "shared/movieposter", locals: { movie: movie, width: 92 } %>
               </div>
             <% end %>
@@ -40,10 +48,10 @@
         <% end %>
       </div>  
     </div>
-    <div class="column">
+    <div class="col-sm">
       <div class="tabs is-fullwidth">
         <ul>
-          <li class="is-active"><a href="#details">Details</a></li>
+          <li><a href="#details">Details</a></li>
           <li><a href="#cast">Cast</a></li>
           <li><a href="#crew">Crew</a></li>
           <li><a href="#media">Media</a></li>
@@ -64,9 +72,9 @@
         </div>
         <div class="top-cast">
           <h3>Top Billed Cast</h3>
-          <div class="columns">
-            <% @cast[0..5].each do |cast| %>
-              <div class="column is-one-third-mobile">
+          <div class="row">
+            <% @cast.take(6).each do |cast| %>
+              <div class="col-4 col-sm">
                 <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
               </div>
             <% end %>
@@ -93,9 +101,9 @@
         
         <div class="videos">
           <% @videos["results"].each_slice(2) do |videos| %>
-            <div class="columns is-mobile">
+            <div class="row is-mobile">
               <% videos.each do |video| %>
-                <div class="column is-half">
+                <div class="col-sm-6">
                   <%= render partial: "shared/video", locals: { video: video } %>
                 </div>
               <% end %>
@@ -106,9 +114,9 @@
       <div id="cast" class="movie-section">
         <div>
           <% @cast.each_slice(2) do |people| %>
-            <div class="columns is-mobile">
+            <div class="row is-mobile">
               <% people.each do |cast| %>
-                <div class="column">
+                <div class="col-sm-6">
                   <%= render partial: "shared/credit", locals: { credit: cast } %>
                 </div>
               <% end %>
@@ -119,9 +127,9 @@
       <div id="crew" class="movie-section">
         <div>
           <% @crew.each_slice(2) do |people| %>
-            <div class="columns is-mobile">
+            <div class="row is-mobile">
               <% people.each do |crew| %>
-                <div class="column">
+                <div class="col-sm-6">
                   <%= render partial: "shared/credit", locals: { credit: crew } %>
                 </div>
               <% end %>
@@ -133,9 +141,9 @@
         
         <div class="backdrops">
           <% @images["backdrops"].each_slice(2) do |images| %>
-            <div class="columns is-mobile">
+            <div class="row is-mobile">
               <% images.each do |image| %>
-                <div class="column">
+                <div class="col-6">
                   <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
                     <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
                   </a>
@@ -144,9 +152,9 @@
             </div>
           <% end %>
           <% @images["posters"].each_slice(3) do |images| %>
-            <div class="columns is-mobile">
+            <div class="row is-mobile">
               <% images.each do |image| %>
-                <div class="column">
+                <div class="col-4">
                   <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
                     <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
                   </a>
