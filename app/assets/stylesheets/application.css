@@ -31,7 +31,7 @@
 .navbar-link:after { border-color:#503047; }
 .navbar-dropdown a, .navbar-menu.is-active a { color:#503047; }
 
-.search { width:100%; position: relative; }
+.search { width:100%; position: relative; border-bottom:2px solid #503047; }
 .search input { width:100%; font-size:24px; border:none; box-shadow:none; }
 .search input:focus, .search button:focus, .search button:active { box-shadow:none !important; }
 .search button { position:absolute; top:0; right:0; height:100%; border:none; font-size:20px; }
@@ -96,4 +96,8 @@ footer { margin-top:30px; }
 
 .easy-autocomplete {
   width: 100% !important;
+}
+
+input::-webkit-input-placeholder { 
+  font-style: italic;
 }

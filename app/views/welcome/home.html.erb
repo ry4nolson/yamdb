@@ -1,44 +1,62 @@
 
-<br>
 <div class="row">
-  <div class="col-sm is-three-quarters">
+  <div class="col-sm-9">
     <h3>Popluar Movies</h3>
     <div class="movie-slider">
-      <% @popular["results"].each_slice(4) do |movies| %>
-        <% movies.each do |movie| %>
-          <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+      <div class="row">
+        <% @popular["results"].each do |movie| %>
+          <% #movies.each do |movie| %>
+            <div class="col">
+              <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+            </div>
+          <% #end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
+    
+    <style>
+      .movie-slider {
+        overflow-x:scroll;
+      }
+      .movie-slider .row {
+        width:400%;
+      }
+    </style>
     
     <h3>In Theatres Now</h3>
     <div class="movie-slider">
-      <% @now_playing["results"].each_slice(4) do |movies| %>
-        <% movies.each do |movie| %>
-          <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+      <div class="row">
+        <% @now_playing["results"].each do |movie| %>
+          <div class="col">
+            <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
     
     <h3>Popular TV Shows</h3>
     <div class="movie-slider">
-      <% @popular_tv["results"].each_slice(4) do |shows| %>
-        <% shows.each do |show| %>
-          <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+      <div class="row">
+        <% @popular_tv["results"].each do |show| %>
+          <div class="col">
+            <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
     
     <h3>TV Shows On The Air</h3>
     <div class="movie-slider">
-      <% @on_the_air["results"].each_slice(4) do |shows| %>
-        <% shows.each do |show| %>
-          <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+      <div class="row">
+        <% @on_the_air["results"].each do |show| %>
+          <div class="col">
+            <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
-  <div class="col-sm">
+  <div class="col-sm-3">
     <h3 class="is-uppercase">/r/Movies news</h3>
     <hr>
     <% @rmovies["data"]["children"][0...5].each do |item| %>
@@ -59,16 +77,16 @@
 </div>
 
 
-<script>
-  $(function(){
-    $(".movie-slider").bxSlider({
-        minSlides: 2,
-        maxSlides: 10,
-        moveSlides: 1,
-        mode: 'horizontal',
-        slideWidth: 150,
-        slideMargin: 20,
-        pager: false
-    });
-  })
-</script>
+<!--<script>-->
+<!--  $(function(){-->
+<!--    $(".movie-slider").bxSlider({-->
+<!--        minSlides: 2,-->
+<!--        maxSlides: 10,-->
+<!--        moveSlides: 1,-->
+<!--        mode: 'horizontal',-->
+<!--        slideWidth: 150,-->
+<!--        slideMargin: 20,-->
+<!--        pager: false-->
+<!--    });-->
+<!--  })-->
+<!--</script>-->
