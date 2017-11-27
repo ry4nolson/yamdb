@@ -10,9 +10,9 @@
 
 <div id="movies" class="search-results">
   <% @movies.each_slice(4) do |results| %>
-    <div class="row is-centered is-mobile">
+    <div class="row">
       <% results.each do |result| %>
-        <div class="col-sm is-one-third-mobile is-centered">
+        <div class="col-6 col-sm-3">
           <%= render partial: "shared/movieposter", locals: { movie: result, width: 154 } %>
         </div>
       <% end %>
@@ -21,10 +21,10 @@
 </div>
 
 <div id="shows" class="search-results">
-  <% @shows.each_slice(5) do |results| %>
-    <div class="row is-centered">
+  <% @shows.each_slice(4) do |results| %>
+    <div class="row">
       <% results.each do |result| %>
-        <div class="col-sm">
+        <div class="col-6 col-sm-3">
           <%= render partial: "shared/tvposter", locals: { show: result, width: 154 } %>
         </div>
       <% end %>
@@ -33,10 +33,10 @@
 </div>
 
 <div id="people" class="search-results">
-  <% @people.each_slice(5) do |results| %>
-    <div class="row is-centered">
+  <% @people.each_slice(4) do |results| %>
+    <div class="row">
       <% results.each do |result| %>
-        <div class="col-sm">
+        <div class="col-6 col-sm-3">
           <%= render partial: "shared/credittall", locals: { credit: result, width: 154 } %>
         </div>
       <% end %>

@@ -1,8 +1,14 @@
-<div class="credit">
+<div class="credit credit-wide">
   <a href="/person/<%= credit["id"] %>">
   <div class="media">
     <div class="media-left">
-      <%= image_tag "https://image.tmdb.org/t/p/w45#{credit["profile_path"]}" if credit["profile_path"] %>
+    <% if !credit["profile_path"].nil? %>
+    <%= image_tag "https://image.tmdb.org/t/p/w45#{credit["profile_path"]}" if credit["profile_path"] %>
+    <% else %>
+    <div class="no-image">
+      <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
+    <% end %>
     </div>
     <div class="media-content">
       <div class="content">

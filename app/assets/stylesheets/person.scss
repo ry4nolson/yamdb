@@ -1,3 +1,36 @@
 // Place all the styles related to the Person controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.credit {
+  margin-bottom:20px;
+}
+.credit-tall {
+  width:150px;
+  margin:0 auto 20px;
+  position:relative;
+}
+
+.credit-name {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:5px;
+  background:rgba(0,0,0,0.75);
+  color:#fff;
+}
+
+.credit img { display:block; }
+
+.credit.credit-wide .no-image {
+  height: 67px;
+  font-size:30px;
+  padding:0;
+}
+
+.credit.credit-wide .no-image i {
+  font-size:30px;
+  line-height:67px;
+}

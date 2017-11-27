@@ -97,11 +97,23 @@
       type: "custom",
       method: function(value, result)  {
         var route = result.media_type;
-        return "<a href=/" + route + "/" + result.id + "><em>" +  result.media_type + "</em> - " + value + "</a>";
+        var icon = "";
+        if (result.media_type == "movie"){
+          icon = "film";
+          route = "movies"
+        }
+        else if (result.media_type == "person")
+          icon = "user";
+        else
+          icon = result.media_type;
+        return "<a href=/" + route + "/" + result.id + "><i class='fa fa-" + icon  + "'></i> " + value + "</a>";
       }
     },
     ajaxSettings: {
         dataType: "json"
+    },
+    list: {
+      maxNumberOfElements: 15
     },
     requestDelay: 200
 };
