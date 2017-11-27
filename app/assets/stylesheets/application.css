@@ -101,3 +101,15 @@ footer { margin-top:30px; }
 input::-webkit-input-placeholder { 
   font-style: italic;
 }
+
+.movie-slider {
+  overflow-x:scroll;
+}
+.movie-slider .row {
+  width:400%;
+}
+
+@media screen and (max-width: 768px)
+{
+  .movie-slider .row { width:700%; } 
+}
