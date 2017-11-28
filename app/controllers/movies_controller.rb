@@ -5,7 +5,11 @@ class MoviesController < ApplicationController
   
   def index
     popular(false)
-    now_playing(false);
+    now_playing(false)
+    top_rated(false)
+    upcoming(false)
+    
+    @list = [@popular, @now_playing, @top_rated, @upcoming]
   end
 
   def show

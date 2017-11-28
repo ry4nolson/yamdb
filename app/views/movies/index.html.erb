@@ -2,32 +2,28 @@
   "Movies"
 end %>
 
-<% if defined? @now_playing %>
-  <h3>In Theatres</h3>
-  <div class="<%= if @paging 
-  "movies" 
-  else "movie-slider"
-  end %>">
-    <% @now_playing['results'].each do |movie| %>
-      <%= render partial: "shared/poster", locals: {item: movie, width: 154, type: "movie"} %>
-    <% end %>
-  </div>
-<% end %>
-
-
-<% if defined? @popular %>
-  <h3>Popular Movies</h3>
-  <div class="<%= if @paging 
-  "movies" 
-  else "movie-slider"
-  end %>">
-    <% @popular['results'].each do |movie| %>
-      <%= render partial: "shared/poster", locals: {item: movie, width: 154, type: "movie"} %>
-    <% end %>
-  </div>
+<% @list.each do |list| %>
+  <% if defined? list %>
+    <h3><%= list["heading"] %></h3>
+    <div class="<%= if @paging 
+    "movies" 
+    else "movie-slider"
+    end %>">
+      <% list['results'].each do |movie| %>
+        <%= render partial: "shared/poster", locals: {item: movie, width: 154, type: "movie"} %>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
 
 <% if @paging %>
+
+<% if @list[0]["page"] < @list[0]["total_pages"] %>
+<div class="next-page">
+  <a href="<%= request.path + "?p=" + (@list[0]["page"] + 1).to_s %>">Next Page</a>
+</div>
+<% end %>
+
 <script>
   $(".movie").each(function(i, el){
     $el = $(el);
@@ -48,7 +44,6 @@ end %>
     $(".movie-slider").bxSlider({
         minSlides: 2,
         maxSlides: 10,
-        moveSlides: 1,
         mode: 'horizontal',
         slideWidth: 150,
         slideMargin: 20,

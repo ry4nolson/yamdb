@@ -1,30 +1,50 @@
+<% content_for :title do 
+  "TV Shows"
+end %>
 
+<% @list.each do |list| %>
+  <% if defined? list %>
+    <h3><%= list["heading"] %></h3>
+    <div class="<%= if @paging 
+    "shows" 
+    else "tv-slider"
+    end %>">
+      <% list['results'].each do |show| %>
+        <%= render partial: "shared/poster", locals: {item: show, width: 154, type: "tv"} %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
 
-<% if defined? @on_the_air %>
-  <h3>On the Air</h3>
-  <div class="tv-slider">
-    <% @on_the_air['results'].each do |show| %>
-      <%= render partial: "shared/poster", locals: {item: show, width: 154, type: "tv"} %>
-    <% end %>
-  </div>
+<% if @paging %>
+
+<% if @list[0]["page"] < @list[0]["total_pages"] %>
+<div class="next-page">
+  <a href="<%= request.path + "?p=" + (@list[0]["page"] + 1).to_s %>">Next Page</a>
+</div>
 <% end %>
 
 
-<% if defined? @popular %>
-  <h3>Popular Shows</h3>
-  <div class="tv-slider">
-    <% @popular['results'].each do |show| %>
-      <%= render partial: "shared/poster", locals: {item: show, width: 154, type: "tv"} %>
-    <% end %>
-  </div>
-<% end %>
+<script>
+  $(".movie").each(function(i, el){
+    $el = $(el);
+    $el.wrap("<div class='col-6 col-sm-3'></div>");
+    
+    if (i % 4 == 0)
+      $(".shows").append("<div class='row'></div>");
+      
+    $el.parent().appendTo(".shows .row:last");
+    
+  });
+</script>
+
+<% else %>
 
 <script>
   $(function(){
     $(".tv-slider").bxSlider({
         minSlides: 2,
         maxSlides: 10,
-        moveSlides: 1,
         mode: 'horizontal',
         slideWidth: 150,
         slideMargin: 20,
@@ -32,3 +52,5 @@
     });
   })
 </script>
+
+<% end %>

@@ -2,8 +2,11 @@ class TvController < ApplicationController
   include TvHelper
   
   def index
-    @popular = popular_tv(false)
-    @on_the_air = on_the_air(false)
+    popular(false)
+    on_the_air(false)
+    top_rated(false)
+    
+    @list = [@popular_tv, @on_the_air, @top_rated_tv]
   end
   
   def show
