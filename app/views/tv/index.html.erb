@@ -4,7 +4,7 @@
   <h3>On the Air</h3>
   <div class="tv-slider">
     <% @on_the_air['results'].each do |show| %>
-      <%= render partial: "shared/tvposter", locals: {show: show, width: 154} %>
+      <%= render partial: "shared/poster", locals: {item: show, width: 154, type: "tv"} %>
     <% end %>
   </div>
 <% end %>
@@ -14,7 +14,7 @@
   <h3>Popular Shows</h3>
   <div class="tv-slider">
     <% @popular['results'].each do |show| %>
-      <%= render partial: "shared/tvposter", locals: {show: show, width: 154} %>
+      <%= render partial: "shared/poster", locals: {item: show, width: 154, type: "tv"} %>
     <% end %>
   </div>
 <% end %>

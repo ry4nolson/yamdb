@@ -9,7 +9,7 @@ end %>
   else "movie-slider"
   end %>">
     <% @now_playing['results'].each do |movie| %>
-      <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
+      <%= render partial: "shared/poster", locals: {item: movie, width: 154, type: "movie"} %>
     <% end %>
   </div>
 <% end %>
@@ -22,7 +22,7 @@ end %>
   else "movie-slider"
   end %>">
     <% @popular['results'].each do |movie| %>
-      <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
+      <%= render partial: "shared/poster", locals: {item: movie, width: 154, type: "movie"} %>
     <% end %>
   </div>
 <% end %>

@@ -13,7 +13,7 @@
     <div class="row">
       <% results.each do |result| %>
         <div class="col-6 col-sm-3">
-          <%= render partial: "shared/movieposter", locals: { movie: result, width: 154 } %>
+          <%= render partial: "shared/poster", locals: { item: result, width: 154, type: "movie" } %>
         </div>
       <% end %>
     </div>
@@ -25,7 +25,7 @@
     <div class="row">
       <% results.each do |result| %>
         <div class="col-6 col-sm-3">
-          <%= render partial: "shared/tvposter", locals: { show: result, width: 154 } %>
+          <%= render partial: "shared/poster", locals: { item: result, width: 154, type: "tv" } %>
         </div>
       <% end %>
     </div>

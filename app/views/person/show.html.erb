@@ -40,9 +40,9 @@ end %>
           
           <h3>Known For</h3>
           <div class="row">
-            <% @knownfor.take(6).each do |movie| %>
+            <% @knownfor.take(6).each do |film| %>
               <div class="col-4 col-sm">
-                <%= render partial: "shared/movieposter", locals: { movie: movie, width: 185 } %>
+                <%= render partial: "shared/poster", locals: { item: film, width: 185, type: film["media_type"] } %>
               </div>
             <% end %>
           </div>

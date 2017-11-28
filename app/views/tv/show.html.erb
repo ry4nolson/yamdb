@@ -34,7 +34,7 @@ end %>
           <div class="row">
             <% similars.each do |show| %>
               <div class="col-sm-4 embed-container">
-                <%= render partial: "shared/tvposter", locals: { show: show, width: 92 } %>
+                <%= render partial: "shared/poster", locals: { item: show, width: 92, type: "tv" } %>
               </div>
             <% end %>
           </div>

@@ -7,7 +7,7 @@
         <% @popular["results"].each do |movie| %>
           <% #movies.each do |movie| %>
             <div class="col">
-              <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+              <%= render partial: "shared/poster", locals: { item: movie, width: 154, type: "movie" } %>
             </div>
           <% #end %>
         <% end %>
@@ -19,7 +19,7 @@
       <div class="row">
         <% @now_playing["results"].each do |movie| %>
           <div class="col">
-            <%= render partial: "shared/movieposter", locals: { movie: movie, width: 154 } %>
+            <%= render partial: "shared/poster", locals: { item: movie, width: 154, type: "movie" } %>
           </div>
         <% end %>
       </div>
@@ -30,7 +30,7 @@
       <div class="row">
         <% @popular_tv["results"].each do |show| %>
           <div class="col">
-            <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+            <%= render partial: "shared/poster", locals: { item: show, width: 154, type: "tv" } %>
           </div>
         <% end %>
       </div>
@@ -41,7 +41,7 @@
       <div class="row">
         <% @on_the_air["results"].each do |show| %>
           <div class="col">
-            <%= render partial: "shared/tvposter", locals: { show: show, width: 154 } %>
+            <%= render partial: "shared/poster", locals: { item: show, width: 154, type: "tv" } %>
           </div>
         <% end %>
       </div>
