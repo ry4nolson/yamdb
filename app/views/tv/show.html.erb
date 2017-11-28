@@ -1,5 +1,5 @@
 <% content_for :title do 
-  @show["title"]
+  @show["name"]
 end %>
 
 <% content_for :hero do %>
@@ -61,6 +61,16 @@ end %>
         </div>
         <div class="overview">
           <p><%= @show["overview"] %></p>
+        </div>
+        <div class="top-cast">
+          <h3>Top Billed Cast</h3>
+          <div class="row">
+            <% @cast.take(6).each do |cast| %>
+              <div class="col-4 col-sm">
+                <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="details">
           <table>
@@ -173,3 +183,8 @@ end %>
     }
   })
 </script>
+
+
+<pre>
+  <%= JSON.pretty_generate @show %>
+</pre>

@@ -24,7 +24,7 @@ class TvController < ApplicationController
     @images = @show["images"]
     
     credits = @show["credits"]
-    @cast = credits["cast"]
+    @cast = credits["cast"].sort_by { |cast| cast["order"] }
     @crew = credits["crew"]
   end
   

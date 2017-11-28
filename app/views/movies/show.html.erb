@@ -89,6 +89,18 @@ end %>
               <th>Runtime</th>
               <td><%= format_time @movie["runtime"] %></td>
             </tr>
+            <tr>
+              <th>Director<%= "s" if @director.count > 1 %></th>
+              <td><%= @director.join ", " %></td>
+            </tr>
+            <tr>
+              <th>Producer<%= "s" if @producer.count > 1 %></th>
+              <td><%= @producer.join ", " %></td>
+            </tr>
+            <tr>
+              <th>Writer<%= "s" if @writer.count > 1 %></th>
+              <td><%= @writer.join ", " %></td>
+            </tr>
           </table>
         </div>
         
