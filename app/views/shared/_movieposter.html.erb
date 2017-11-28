@@ -1,5 +1,5 @@
 
-  <div class="movie">
+  <div class="movie embed-container">
     <a href="<%= MoviesController::pretty_url movie %>">
       <% if !movie["poster_path"].nil? %>
       <img alt="<%= movie['title'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= movie['poster_path'] %>" class="poster">

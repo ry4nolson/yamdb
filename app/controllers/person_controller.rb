@@ -14,7 +14,7 @@ class PersonController < ApplicationController
     @cast_movies = @cast.reject {|a| 
       a["media_type"] != "movie" 
     }.sort_by { |film|
-      film["release_date"].split('-')
+      film["release_date"].split('-') rescue ["0","0","0"]
     }.reverse
     @cast_tv = @cast.reject {|a| 
       a["media_type"] != "tv" 
@@ -25,10 +25,10 @@ class PersonController < ApplicationController
     @crew_movies = @crew.reject {|a| 
       a["media_type"] != "movie" 
     }.sort_by { |film|
-      film["release_date"].split('-')
+      film["release_date"].split('-') rescue ["0","0","0"]
     }.reverse
     @crew_tv = @crew.reject {|a|
-      a["media_type"] != tv
+      a["media_type"] != "tv"
     }
     
     @knownfor = @cast + @crew

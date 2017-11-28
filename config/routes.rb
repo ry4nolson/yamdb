@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'movies/popular', to: 'movies#popular'
   get 'movies/now_playing', to: 'movies#now_playing'
   get 'movies/top_rated', to: 'movies#top_rated'
+  get 'movies/new', to: 'movies#upcoming'
   get 'movies/upcoming', to: 'movies#upcoming'
   get 'movies/:id', to: "movies#show"
   get 'movies/genre/:id', to: "movies#genre"
