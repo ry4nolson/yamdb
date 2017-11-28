@@ -17,7 +17,7 @@ end %>
 <section class="movie-info">
   <div class="row justify-content-center">
     <div class="col-6 col-sm-4">
-      <div class="movie-poster">
+      <div class="movie-poster embed-container">
         <a href="<%= @portraitfull %>" data-lity>
           <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
         </a>
@@ -89,7 +89,10 @@ end %>
                 <strong>
                   <a href="<%= MoviesController::pretty_url credit %>"><%= credit["title"] || credit["original_name"] %></a>
                 </strong> 
-                <%= "as " + credit["character"] if !credit["character"].empty? %>
+                <%= if !credit["character"].nil? && !credit["character"].empty? 
+                "as " + credit["character"] 
+                else puts "no character: " + credit.to_json
+                end%>
             </div>
             </div>
             <div class="col-2 text-right">
