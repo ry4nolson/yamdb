@@ -28,12 +28,19 @@
             <a class="navbar-item" href="/movies/now_playing">
               Now Playing
             </a>
-            <a class="navbar-item" href="/movies/new">
-              New
-            </a>
-            <a class="navbar-item" href="/movies/upcoming">
-              Upcoming
-            </a>
+            <!--<a class="navbar-item" href="/movies/top_rated">-->
+            <!--  Top Rated-->
+            <!--</a>-->
+            <!--<a class="navbar-item" href="/movies/upcoming">-->
+            <!--  Upcoming-->
+            <!--</a>-->
+            <hr class="navbar-divider"> 
+            <div class="navbar-item genres">
+              <% $genres["movies"]["genres"].each do |genre| %>
+                <span class="genre-tag"><a href="/movies/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a></span>
+              <% end %>
+              <div style="clear:left;"></div>
+            </div>
           </div>
         </div>
         <div class="navbar-item has-dropdown is-hoverable">
@@ -50,6 +57,13 @@
             <a class="navbar-item" href="/tv/top_rated">
               Top Rated
             </a>
+            <hr class="navbar-divider"> 
+            <div class="navbar-item genres">
+              <% $genres["tv"]["genres"].each do |genre| %>
+                <span class="genre-tag"><a href="/tv/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a></span>
+              <% end %>
+              <div style="clear:left;"></div>
+            </div>
           </div>
         </div>
       </div>

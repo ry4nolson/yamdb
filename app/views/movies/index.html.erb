@@ -4,7 +4,10 @@ end %>
 
 <% if defined? @now_playing %>
   <h3>In Theatres</h3>
-  <div class="movie-slider">
+  <div class="<%= if @paging 
+  "movies" 
+  else "movie-slider"
+  end %>">
     <% @now_playing['results'].each do |movie| %>
       <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
     <% end %>
@@ -14,7 +17,10 @@ end %>
 
 <% if defined? @popular %>
   <h3>Popular Movies</h3>
-  <div class="movie-slider">
+  <div class="<%= if @paging 
+  "movies" 
+  else "movie-slider"
+  end %>">
     <% @popular['results'].each do |movie| %>
       <%= render partial: "shared/movieposter", locals: {movie: movie, width: 154} %>
     <% end %>
@@ -23,13 +29,14 @@ end %>
 
 <% if @paging %>
 <script>
-  $(".movie").addClass("col-sm").each(function(i, el){
+  $(".movie").each(function(i, el){
     $el = $(el);
+    $el.wrap("<div class='col-6 col-sm-3'></div>");
     
-    if (i % 5 == 0)
-      $(".movie-slider").append("<div class='row is-centered'></div>");
+    if (i % 4 == 0)
+      $(".movies").append("<div class='row'></div>");
       
-    $el.appendTo(".movie-slider .row:last");
+    $el.parent().appendTo(".movies .row:last");
     
   });
 </script>

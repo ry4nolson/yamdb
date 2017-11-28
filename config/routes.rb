@@ -9,13 +9,18 @@ Rails.application.routes.draw do
   get 'tv/popular', to: 'tv#popular'
   get 'tv/on_the_air', to: 'tv#on_the_air'
   get 'tv/top_rated', to: 'tv#top_rated'
+  get 'tv/airing_today', to: 'tv#airing_today'
   get 'tv/:id', to: 'tv#show'
+  get 'tv/genre/:id', to: "tv#genre"
 
 
   get 'movies', to: 'movies#index'
   get 'movies/popular', to: 'movies#popular'
   get 'movies/now_playing', to: 'movies#now_playing'
+  get 'movies/top_rated', to: 'movies#top_rated'
+  get 'movies/upcoming', to: 'movies#upcoming'
   get 'movies/:id', to: "movies#show"
+  get 'movies/genre/:id', to: "movies#genre"
   
   get 'search/index'
   get '/search', to: "search#index"

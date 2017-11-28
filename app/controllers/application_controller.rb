@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   $key = ENV['API_V3']
   
   $markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  
+  $genres = Hash.new
+  $genres["movies"] = JSON.parse($tmdb["genre/movie/list?api_key=#{$key}"].get)
+  $genres["tv"] = JSON.parse($tmdb["genre/movie/list?api_key=#{$key}"].get)
 end

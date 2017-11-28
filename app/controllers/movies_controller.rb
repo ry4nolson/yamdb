@@ -28,6 +28,9 @@ class MoviesController < ApplicationController
     @images = @movie["images"]
   end
   
+  def genre
+    id = params[:id]
+  end
   
   def get_year(date)
     Date.parse(date).year if !date.empty?

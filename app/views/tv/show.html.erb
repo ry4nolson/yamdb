@@ -33,7 +33,7 @@ end %>
         <% @similar["results"].take(9).each_slice(3) do |similars| %>
           <div class="row">
             <% similars.each do |show| %>
-              <div class="col-sm">
+              <div class="col-sm-4 embed-container">
                 <%= render partial: "shared/tvposter", locals: { show: show, width: 92 } %>
               </div>
             <% end %>
@@ -122,9 +122,11 @@ end %>
             <div class="row">
               <% images.each do |image| %>
                 <div class="col-6">
-                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
-                    <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
-                  </a>
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w300/#{image["file_path"]}" %>
+                    </a>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -133,9 +135,11 @@ end %>
             <div class="row">
               <% images.each do |image| %>
                 <div class="col-4">
-                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
-                    <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
-                  </a>
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w154/#{image["file_path"]}" %>
+                    </a>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -169,7 +173,3 @@ end %>
     }
   })
 </script>
-
-<pre>
-  <%= JSON.pretty_generate @show %>
-</pre>
