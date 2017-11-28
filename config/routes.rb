@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/credits', to: 'welcome#credits'
   
   get 'tv', to: 'tv#index'
-  get 'tv/popular', to: 'tv#popular'
+  get 'tv/popular', to: 'tv#popular_tv'
   get 'tv/on_the_air', to: 'tv#on_the_air'
   get 'tv/top_rated', to: 'tv#top_rated'
   get 'tv/airing_today', to: 'tv#airing_today'

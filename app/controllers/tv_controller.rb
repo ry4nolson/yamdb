@@ -2,7 +2,7 @@ class TvController < ApplicationController
   include TvHelper
   
   def index
-    popular(false)
+    popular_tv(false)
     on_the_air(false)
     top_rated(false)
     

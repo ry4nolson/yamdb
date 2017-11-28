@@ -1,5 +1,5 @@
 module TvHelper
-  def popular(renderView = true) 
+  def popular_tv(renderView = true) 
     page = params[:p] || 1
     @popular_tv = JSON.parse($tmdb["tv/popular?api_key=#{$key}&page=#{page}"].get)
     @popular_tv["heading"] = "Popular TV Series"
