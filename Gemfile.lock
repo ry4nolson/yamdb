@@ -131,6 +131,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.15.5)
+      multi_json
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -191,6 +193,7 @@ DEPENDENCIES
   rails_12factor
   redcarpet
   rest-client
+  rollbar
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simple-rss

@@ -21,21 +21,14 @@ end %>
 <% end %>
 
 <section class="movie-info">
-  <div class="row justify-content-center is-hidden-tablet">
-      <div class="col-6 movie-poster">
-        <a href="<%= @posterfull %>" data-lity>
-          <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
-        </a>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 is-hidden-mobile">
+  <div class="row justify-content-center">
+    <div class="col-6 col-sm-4">
       <div class="movie-poster">
         <a href="<%= @posterfull %>" data-lity>
           <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
         </a>
       </div>
-      <div class="similar">
+      <div class="similar is-hidden-mobile">
         <h4 class="is-size-4">Similar Movies</h4>
         <% @similar["results"].take(12).each_slice(3) do |similars| %>
           <div class="row">

@@ -1,6 +1,6 @@
 
   <div class="movie">
-    <a href="/movies/<%= movie['id'] %>-<%= movie['name'].parameterize %>">
+    <a href="<%= MoviesController::pretty_url movie %>">
       <img alt="<%= movie['title'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= movie['backdrop_path'] %>" class="poster">
     </a>
   </div>

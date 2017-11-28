@@ -15,16 +15,9 @@ end %>
 <% end %>
 
 <section class="movie-info">
-  <div class="row justify-content-center is-hidden-tablet">
-      <div class="col-6 is-half movie-poster">
-        <a href="<%= @portraitfull %>" data-lity>
-          <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
-        </a>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="movie-poster is-hidden-mobile">
+  <div class="row justify-content-center">
+    <div class="col-6 col-sm-4">
+      <div class="movie-poster">
         <a href="<%= @portraitfull %>" data-lity>
           <img src="<%= @portrait %>" alt="<%= @person['title'] %>">
         </a>
@@ -42,6 +35,17 @@ end %>
       <div id="details" class="movie-section">
         <div class="overview">
           <p><%= @person["biography"] %></p>
+        </div>
+        <div class="knownfor">
+          
+          <h3>Known For</h3>
+          <div class="row">
+            <% @knownfor.take(6).each do |movie| %>
+              <div class="col-4 col-sm">
+                <%= render partial: "shared/movieposter", locals: { movie: movie, width: 185 } %>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="details">
           <table>
@@ -68,6 +72,47 @@ end %>
           </table>
         </div>
         
+      </div>
+      <div id="cast" class="movie-section">
+        <% if @cast_movies.count == 0 && @cast_tv.count == 0 %>
+          <%= @person["name"] %> hasn't appeared in any movies or TV shows
+        <% end %>
+        
+        <% if @cast_movies.count > 0 %>
+        <h3 class="is-size-3">Movies</h3>
+        <% end %>
+        <% @cast_movies.each do |credit| %>
+        <div>
+          <div class="row">
+            <div class="col">
+              <div><strong><a href="<%= MoviesController::pretty_url credit %>"><%= credit["title"] || credit["original_name"] %></a></strong> as <%= credit["character"] %></div>
+            </div>
+            <div class="col-2 text-right">
+              <%= Date.parse(credit["release_date"]).year rescue "-" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div id="crew" class="movie-section">
+        <% if @crew_movies.count == 0 && @crew_tv.count == 0 %>
+          <%= @person["name"] %> hasn't worked on any movies or TV shows
+        <% end %>
+        <% if @crew_movies.count > 0 %>
+        <h3 class="is-size-3">Movies</h3>
+        <% end %>
+        <% @crew_movies.each do |credit| %>
+          <div>
+            <div class="row">
+              <div class="col">
+                <div><strong><a href="<%= MoviesController::pretty_url credit %>"><%= credit["title"] || credit["original_name"] %></a></strong> <%= credit["job"] %></div>
+              </div>
+              <div class="col-2 text-right">
+                <%= Date.parse(credit["release_date"]).year rescue "-"  %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div id="media" class="movie-section">
         

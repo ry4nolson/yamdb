@@ -40,6 +40,10 @@ class MoviesController < ApplicationController
       "#{length}m"
     end
   end
-  helper_method :get_year, :format_time
+  
+  def self.pretty_url(movie)
+    "/movies/#{movie["id"]}-" + "#{movie["title"] || movie["original_title"]}".parameterize
+  end
+  helper_method :get_year, :format_time, :pretty_url
 end
 

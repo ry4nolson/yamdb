@@ -27,6 +27,7 @@ gem 'dotenv'
 gem 'font-awesome-sass'
 gem 'redcarpet'
 gem 'simple-rss'
+gem 'rollbar'
 
 
 # Use ActiveModel has_secure_password
