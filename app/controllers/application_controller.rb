@@ -9,12 +9,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   Dotenv.load
-  $tmdb = RestClient::Resource.new('https://api.themoviedb.org/3')
   $key = ENV['API_V3']
   
   $markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   
   $genres = Hash.new
-  $genres["movies"] = JSON.parse($tmdb["genre/movie/list?api_key=#{$key}"].get)
-  $genres["tv"] = JSON.parse($tmdb["genre/movie/list?api_key=#{$key}"].get)
+  $genres["movies"] = ApplicationHelper::get("genre/movie/list")
+  $genres["tv"] = ApplicationHelper::get("genre/movie/list")
 end

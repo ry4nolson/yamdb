@@ -5,7 +5,7 @@ class PersonController < ApplicationController
   def show
     id = params[:id]
     
-    @person = JSON.parse($tmdb["person/#{id}?api_key=#{$key}&append_to_response=combined_credits,images"].get)
+    @person = ApplicationHelper::get "person/#{id}?append_to_response=combined_credits,images"
     
     @portrait = "https://image.tmdb.org/t/p/w500/#{@person['profile_path']}"
     @portrait = "https://image.tmdb.org/t/p/original/#{@person['profile_path']}"

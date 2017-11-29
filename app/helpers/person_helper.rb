@@ -1,6 +1,6 @@
 module PersonHelper
   def popular_people(render = true) 
-    @popular_people = JSON.parse($tmdb["person/popular?api_key=#{$key}"].get)
+    @popular_people = ApplicationHelper::get "person/popular?api_key=#{$key}"
     render 'index' if render
     
     @popular_people

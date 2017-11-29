@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
 
   def show
     id = params[:id]
-    @movie = JSON.parse($tmdb["movie/#{id}?api_key=#{$key}&append_to_response=reviews,videos,similar,images,credits"].get)
+    @movie = ApplicationHelper::get "movie/#{id}?append_to_response=reviews,videos,similar,images,credits"
     
     puts @movie
   

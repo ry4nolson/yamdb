@@ -2,9 +2,9 @@ class SearchController < ApplicationController
   def index
     @q = params[:q]
     
-    @movies = JSON.parse($tmdb["/search/movie?query=#{@q}&include_adult=false&api_key=#{$key}"].get)["results"]
-    @shows = JSON.parse($tmdb["/search/tv?query=#{@q}&api_key=#{$key}"].get)["results"]
-    @people = JSON.parse($tmdb["/search/person?query=#{@q}&api_key=#{$key}"].get)["results"]
+    @movies = ApplicationHelper::get "/search/movie?query=#{@q}&include_adult=false"["results"]
+    @shows = ApplicationHelper::get "/search/tv?query=#{@q}"["results"]
+    @people = ApplicationHelper::get "/search/person?query=#{@q}"["results"]
   end
   
   def autocomplete
@@ -15,7 +15,7 @@ class SearchController < ApplicationController
       return
     end
     
-    @search = JSON.parse($tmdb["/search/multi?query=#{@q}&include_adult=false&api_key=#{$key}"].get)["results"]
+    @search = ApplicationHelper::get "/search/multi?query=#{@q}&include_adult=false"["results"]
     render :json => @search
   end
 end

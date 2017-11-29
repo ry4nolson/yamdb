@@ -2,7 +2,7 @@ module MoviesHelper
   
   def popular(renderView = true) 
     page = params[:p] || 1
-    @popular = JSON.parse($tmdb["movie/popular?api_key=#{$key}&page=#{page}"].get)
+    @popular = ApplicationHelper::get "movie/popular?page=#{page}"
     @popular["heading"] = "Popular Movies"
     if renderView
       @paging = true;
@@ -15,7 +15,7 @@ module MoviesHelper
   
   def now_playing(renderView = true) 
     page = params[:p] || 1
-    @now_playing = JSON.parse($tmdb["movie/now_playing?api_key=#{$key}&page=#{page}"].get)
+    @now_playing = ApplicationHelper::get "movie/now_playing?page=#{page}"
     @now_playing["heading"] = "In Theatres Now"
     if renderView
       @paging = true;
@@ -28,7 +28,7 @@ module MoviesHelper
   
   def upcoming(renderView = true) 
     page = params[:p] || 1
-    @upcoming = JSON.parse($tmdb["movie/upcoming?api_key=#{$key}&page=#{page}"].get)
+    @upcoming = ApplicationHelper::get "movie/upcoming?page=#{page}"
     @upcoming["heading"] = "Upcoming Movies"
     if renderView
       @paging = true;
@@ -41,7 +41,7 @@ module MoviesHelper
   
   def top_rated(renderView = true) 
     page = params[:p] || 1
-    @top_rated = JSON.parse($tmdb["movie/top_rated?api_key=#{$key}&page=#{page}"].get)
+    @top_rated = ApplicationHelper::get "movie/top_rated?page=#{page}"
     @top_rated["heading"] = "Top Rated Movies"
     if renderView
       @paging = true;
@@ -59,7 +59,7 @@ module MoviesHelper
     url = id.split("-").drop(1)
     genreName = url.join(" ")
     
-    @genre_movies = JSON.parse($tmdb["discover/movie/?api_key=#{$key}&with_genres=#{id}&page=#{page}"].get)
+    @genre_movies = ApplicationHelper::get "discover/movie/?with_genres=#{id}&page=#{page}"
     @genre_movies["heading"] = genreName
     if renderView
       @paging = true;
