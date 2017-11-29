@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     
     @director = @crew.select { |crew| crew["job"] == "Director" }.map { |crew| crew["name"] }
     @producer = @crew.select { |crew| crew["job"].include? "Producer" }.map { |crew| crew["name"] }
-    @writer = @crew.select { |crew| crew["job"].include? "Writer" }.map { |crew| crew["name"] }
+    @writer = @crew.select { |crew| crew["department"].include? "Writing" }.map { |crew| crew["name"] }
     
     @reviews = @movie["reviews"]
     @videos = @movie["videos"]
