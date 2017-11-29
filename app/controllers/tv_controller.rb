@@ -31,10 +31,6 @@ class TvController < ApplicationController
     @crew = credits["crew"]
   end
   
-  def genre
-    id = params[:id]
-  end
-  
   def self.pretty_url(show)
     "/tv/#{show["id"]}-" + "#{show["name"] || show["original_title"]}".parameterize
   end

@@ -51,4 +51,22 @@ module MoviesHelper
     
     @top_rated
   end
+  
+  def genre(renderView = true)
+    id = params[:id]
+    page = params[:p] || 1
+    
+    url = id.split("-").drop(1)
+    genreName = url.join(" ")
+    
+    @genre_movies = JSON.parse($tmdb["discover/movie/?api_key=#{$key}&with_genres=#{id}&page=#{page}"].get)
+    @genre_movies["heading"] = genreName
+    if renderView
+      @paging = true;
+      @list = [@genre_movies]
+      render 'index'
+    end
+    
+    @genre_movies
+  end
 end

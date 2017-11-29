@@ -52,7 +52,7 @@
     <hr>
     <% @rmovies["data"]["children"][0...5].each do |item| %>
         <div class="news">
-          <div class="news-title"><a  href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-title"><a <%= lity item["data"]["url"] %> href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
           <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
         </div>
     <% end %>

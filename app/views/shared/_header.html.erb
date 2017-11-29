@@ -37,7 +37,7 @@
             <hr class="navbar-divider"> 
             <div class="navbar-item genres">
               <% $genres["movies"]["genres"].each do |genre| %>
-                <span class="genre-tag"><a href="/movies/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a></span>
+              <span class="genre-tag"><a href="/movies/genre/<%= genre["id"] %>-<%= genre["name"].parameterize %>"><%= genre["name"] %></a></span>
               <% end %>
               <div style="clear:left;"></div>
             </div>

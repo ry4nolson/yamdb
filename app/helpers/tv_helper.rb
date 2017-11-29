@@ -35,4 +35,24 @@ module TvHelper
     end
     @top_rated_tv
   end
+  
+  
+  def genre(renderView = true)
+    id = params[:id]
+    page = params[:p] || 1
+    
+    url = id.split("-")
+    id = url.shift
+    genreName = url.join(" ")
+    
+    @genre_tv = JSON.parse($tmdb["discover/tv/?api_key=#{$key}&with_genres=#{id}&page=#{page}"].get)
+    @genre_tv["heading"] = genreName
+    if renderView
+      @paging = true;
+      @list = [@genre_tv]
+      render 'index'
+    end
+    
+    @genre_tv
+  end
 end

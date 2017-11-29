@@ -19,9 +19,10 @@ class WelcomeController < ApplicationController
   end
   
   def lity(url)
-    if url.match /youtube|vimeo/
+    if url.match (/youtube|vimeo|imgur/)
       "data-lity"
     end
   end
+  
   helper_method :lity
 end
