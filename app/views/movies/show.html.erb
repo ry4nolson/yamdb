@@ -85,10 +85,12 @@ end %>
               <th>Release Date</th>
               <td><%= @movie["release_date"] %></td>
             </tr>
+            <% if !@movie["runtime"].nil? %>
             <tr>
               <th>Runtime</th>
               <td><%= format_time @movie["runtime"] %></td>
             </tr>
+            <% end %>
             <tr>
               <th>Director<%= "s" if @director.count > 1 %></th>
               <td><%= @director.join ", " %></td>

@@ -33,7 +33,7 @@
 .navbar-dropdown a, .navbar-menu.is-active a { color:#503047; }
 
 .search { width:100%; position: relative; border-bottom:2px solid #503047; }
-.search input { width:100%; font-size:24px; border:none; box-shadow:none; }
+.search input { width:100%; font-size:24px; border:none; box-shadow:none; padding:0; }
 .search input:focus, .search button:focus, .search button:active { box-shadow:none !important; }
 .search button { position:absolute; top:0; right:0; height:100%; border:none; font-size:20px; }
 
@@ -98,6 +98,34 @@ a.youtube-video {position:relative; display: block; }
 .easy-autocomplete {
   width: 100% !important;
 }
+.easy-autocomplete-container ul {
+    border: none;
+}
+
+.easy-autocomplete-container ul li {
+    border: none;
+    padding: 8px 14px;
+}
+
+.easy-autocomplete-container {
+    box-shadow: 0 9px 21px rgba(0,0,0,0.5);
+}
+
+.easy-autocomplete a {
+    color: #000;
+}
+
+.eac-item i {
+    width: 24px;
+}
+
+.easy-autocomplete-container ul li.selected {
+    background: #DC602E;
+}
+.easy-autocomplete-container ul li.selected a {
+    color:#fff;
+    text-decoration: none;
+}
 
 input::-webkit-input-placeholder { 
   font-style: italic;
@@ -125,6 +153,7 @@ input::-webkit-input-placeholder {
 
 @media screen and (max-width: 768px)
 {
+  .navbar .container { padding:0; }
   .movie-slider .row { width:700%; } 
   .navbar-item.genres { width:100%; }
 }
