@@ -56,10 +56,11 @@ module MoviesHelper
     id = params[:id]
     page = params[:p] || 1
     
-    url = id.split("-").drop(1)
+    url = id.split("-")
+    id = url.shift
     genreName = url.join(" ")
     
-    @genre_movies = ApplicationHelper::get "discover/movie/?with_genres=#{id}&page=#{page}"
+    @genre_movies = ApplicationHelper::get "discover/movie?with_genres=#{id}&page=#{page}"
     @genre_movies["heading"] = genreName
     if renderView
       @paging = true;

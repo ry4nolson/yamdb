@@ -15,5 +15,6 @@ class ApplicationController < ActionController::Base
   
   $genres = Hash.new
   $genres["movies"] = ApplicationHelper::get("genre/movie/list")
-  $genres["tv"] = ApplicationHelper::get("genre/movie/list")
+  $genres["tv"] = ApplicationHelper::get("genre/tv/list")
+  puts $genres
 end

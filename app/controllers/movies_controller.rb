@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
     id = params[:id]
     @movie = ApplicationHelper::get "movie/#{id}?append_to_response=reviews,videos,similar,images,credits"
     
-    puts @movie
+    #puts @movie
   
     @hero = "https://image.tmdb.org/t/p/w1280/#{@movie['backdrop_path']}"
     @poster = "https://image.tmdb.org/t/p/w500/#{@movie['poster_path']}"
@@ -26,7 +26,7 @@ class MoviesController < ApplicationController
     @cast = credits["cast"]
     @crew = credits["crew"]
     
-    @director = @crew.select { |crew| crew["job"] == "Director" }.map { |crew| crew["name"] }
+    @director = @crew.select { |crew| crew["job"].include? "Director" }.map { |crew| crew["name"] }
     @producer = @crew.select { |crew| crew["job"].include? "Producer" }.map { |crew| crew["name"] }
     @writer = @crew.select { |crew| crew["department"].include? "Writing" }.map { |crew| crew["name"] }
     
