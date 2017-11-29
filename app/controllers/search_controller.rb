@@ -2,9 +2,9 @@ class SearchController < ApplicationController
   def index
     @q = params[:q]
     
-    @movies = ApplicationHelper::get "/search/movie?query=#{@q}&include_adult=false"["results"]
-    @shows = ApplicationHelper::get "/search/tv?query=#{@q}"["results"]
-    @people = ApplicationHelper::get "/search/person?query=#{@q}"["results"]
+    @movies = ApplicationHelper::get("/search/movie?query=#{@q}&include_adult=false")["results"]
+    @shows = ApplicationHelper::get("/search/tv?query=#{@q}")["results"]
+    @people = ApplicationHelper::get("/search/person?query=#{@q}")["results"]
   end
   
   def autocomplete
@@ -15,7 +15,7 @@ class SearchController < ApplicationController
       return
     end
     
-    @search = ApplicationHelper::get "/search/multi?query=#{@q}&include_adult=false"["results"]
+    @search = ApplicationHelper::get("/search/multi?query=#{@q}&include_adult=false")["results"]
     render :json => @search
   end
 end
