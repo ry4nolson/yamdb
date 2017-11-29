@@ -74,7 +74,7 @@ end %>
         </div>
         <div class="details">
           <table class="table">
-            <% if !@show["homepage"].empty? %>
+            <% if @show["homepage"] && !@show["homepage"].empty? %>
             <tr>
               <th>Homepage</th>
               <td><a href="<%= @show["homepage"] %>" target="_blank"><%= @show["homepage"] %></a></td>
@@ -91,6 +91,7 @@ end %>
           </table>
         </div>
         
+        <% if @videos["results"] && @videos["results"].count > 0 %>
         <div class="videos">
           <% @videos["results"].each_slice(2) do |videos| %>
             <div class="row">
@@ -103,6 +104,7 @@ end %>
           <% end %>
         </div>
       </div>
+      <% end %>
       <div id="cast" class="movie-section">
         <% @cast.each_slice(2) do |people| %>
           <div class="row">
