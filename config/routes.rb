@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'people', to: "person#index"
   get 'person/:id', to: "person#show"
 
   get '/', to: 'welcome#home'

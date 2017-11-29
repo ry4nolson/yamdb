@@ -2,6 +2,10 @@ class PersonController < ApplicationController
   
   include PersonHelper
   
+  def index
+    popular_people
+  end
+  
   def show
     id = params[:id]
     
