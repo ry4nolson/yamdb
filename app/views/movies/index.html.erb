@@ -1,5 +1,9 @@
 <% content_for :title do 
-  "Movies"
+    if @list.count > 1
+    "Movies"
+  else
+    "Movies - #{@list[0]["heading"]}"
+  end
 end %>
 
 <% @list.each do |list| %>
