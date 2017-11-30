@@ -56,6 +56,7 @@ end %>
       <div id="details" class="movie-section">
         <div class="rating">
           <span class="is-size-3"><%= @movie["vote_average"] %></span> <span class="is-size-4">/ 10</span>
+          &nbsp; <%= @movie["vote_count"] %> vote(s)
         </div>
         <div class="genres">
           <% @movie["genres"].each do |genre| %>
