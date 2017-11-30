@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/credits', to: 'welcome#credits'
   
   get 'tv', to: 'tv#index'
+  get 'tv/genres', to: 'tv#genre_list'
   get 'tv/popular', to: 'tv#popular_tv'
   get 'tv/on_the_air', to: 'tv#on_the_air'
   get 'tv/top_rated', to: 'tv#top_rated'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
 
   get 'movies', to: 'movies#index'
+  get 'movies/genres', to: 'movies#genre_list'
   get 'movies/popular', to: 'movies#popular'
   get 'movies/now_playing', to: 'movies#now_playing'
   get 'movies/top_rated', to: 'movies#top_rated'

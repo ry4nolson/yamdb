@@ -11,6 +11,10 @@ class MoviesController < ApplicationController
     
     @list = [@popular, @now_playing, @top_rated, @upcoming]
   end
+  
+  def genre_list
+    
+  end
 
   def show
     id = params[:id]
@@ -21,10 +25,8 @@ class MoviesController < ApplicationController
     @posterfull = "https://image.tmdb.org/t/p/original#{@movie['poster_path']}"
     
     @release_dates = @movie["release_dates"]
-    puts @release_dates
     @us = @release_dates["results"].select { |release| release["iso_3166_1"] == "US" }.first["release_dates"] rescue []
 
-    puts @us
     begin
       if @us && @us.count > 0
         @rating = @us.select { |r| r["certification"] && !r["certification"].empty? }
