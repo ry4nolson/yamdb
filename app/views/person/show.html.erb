@@ -90,8 +90,7 @@ end %>
                   <a href="<%= MoviesController::pretty_url credit %>"><%= credit["title"] || credit["original_name"] %></a>
                 </strong> 
                 <%= if !credit["character"].nil? && !credit["character"].empty? 
-                "as " + credit["character"] 
-                else puts "no character: " + credit.to_json
+                "as " + credit["character"]
                 end%>
             </div>
             </div>

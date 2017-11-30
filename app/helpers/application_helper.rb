@@ -1,7 +1,7 @@
 module ApplicationHelper
   def self.get(endpoint, tries = 0)
     
-    puts endpoint
+    #puts endpoint
     
     if tries > 4
       [].to_json
@@ -14,11 +14,11 @@ module ApplicationHelper
         endpoint += "?api_key=#{$key}"
       end
       
-      puts "trying to get #{endpoint}"
+      #puts "trying to get #{endpoint}"
     
       resource = JSON.parse(RestClient::Resource.new('https://api.themoviedb.org/3')[endpoint].get)
       
-      puts resource
+      #puts resource
       
       resource
     rescue RestClient::ExceptionWithResponse => e
