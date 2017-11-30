@@ -29,6 +29,7 @@ gem 'redcarpet'
 gem 'simple-rss'
 gem 'rollbar'
 gem 'meta-tags'
+gem 'exception_handler'
 
 
 # Use ActiveModel has_secure_password
