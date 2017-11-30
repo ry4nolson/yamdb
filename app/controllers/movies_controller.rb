@@ -18,9 +18,9 @@ class MoviesController < ApplicationController
     
     #puts @movie
   
-    @hero = "https://image.tmdb.org/t/p/w1280/#{@movie['backdrop_path']}"
-    @poster = "https://image.tmdb.org/t/p/w500/#{@movie['poster_path']}"
-    @posterfull = "https://image.tmdb.org/t/p/original/#{@movie['poster_path']}"
+    @hero = "https://image.tmdb.org/t/p/w1280#{@movie['backdrop_path']}"
+    @poster = "https://image.tmdb.org/t/p/w500#{@movie['poster_path']}"
+    @posterfull = "https://image.tmdb.org/t/p/original#{@movie['poster_path']}"
     
     credits = @movie["credits"]
     @cast = credits["cast"]
@@ -34,6 +34,14 @@ class MoviesController < ApplicationController
     @videos = @movie["videos"]
     @similar = @movie["similar"]
     @images = @movie["images"]
+    
+    
+    set_meta_tags og: {
+      title:    @movie["title"] || @movie["original_title"],
+      type:     'movie',
+      url:      request.url,
+      image:    [@poster, @hero]
+    }
   end
   
   def get_year(date)

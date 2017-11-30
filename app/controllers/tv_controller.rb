@@ -29,6 +29,13 @@ class TvController < ApplicationController
     credits = @show["credits"]
     @cast = credits["cast"].sort_by { |cast| cast["order"] }
     @crew = credits["crew"]
+    
+    set_meta_tags og: {
+      title:    @show["title"] || @show["original_title"],
+      type:     'tv',
+      url:      request.url,
+      image:    [@poster, @hero]
+    }
   end
   
   def self.pretty_url(show)

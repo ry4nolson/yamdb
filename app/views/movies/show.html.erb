@@ -20,7 +20,9 @@ end %>
 </section>
 <% end %>
 
-<section class="movie-info">
+<section class="movie-info" itemscope itemtype="http://schema.org/Movie">
+  <meta itemprop="name" content="<%= @movie["title"] || @movie["original_title"] %>">
+  <meta itemprop="description" content="<%= @movie["tagline"] %>">
   <div class="row justify-content-center">
     <div class="col-6 col-sm-4">
       <div class="movie-poster embed-container">

@@ -3,6 +3,7 @@ require 'json'
 require 'dotenv'
 require 'redcarpet'
 require 'simple-rss'
+require 'meta-tags'
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
