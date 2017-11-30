@@ -1,5 +1,5 @@
 <% content_for :title do 
-  @movie["title"]
+  raw(@movie["title"] || @movie["original_title"])
 end %>
 
 <% content_for :hero do %>
@@ -162,9 +162,11 @@ end %>
             <div class="row is-mobile">
               <% images.each do |image| %>
                 <div class="col-6">
-                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
-                    <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
-                  </a>
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
+                    </a>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -173,9 +175,11 @@ end %>
             <div class="row is-mobile">
               <% images.each do |image| %>
                 <div class="col-4">
-                  <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
-                    <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
-                  </a>
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                    </a>
+                  </div>
                 </div>
               <% end %>
             </div>
