@@ -17,10 +17,6 @@
 }
 .hero-body > div { position:relative; z-index:1; }
 
-// .hero-crew {
-//   margin-top:175px;
-// }
-
 .year { opacity:.5; }
 
 .movie-poster { margin-top:-200px; border-bottom:1px solid transparent; }
@@ -28,6 +24,8 @@
 .movie-poster > a > img { display:block;box-shadow:0 0 10px #000; max-width:100%; }
 
 .similar { margin-top:20px; }
+
+.movie-rating {font-size:200%; font-weight:bold; color:#fff; background:#000; padding:5px 10px; }
 
 .movie-section { display:none; }
 .movie-section > div { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid #DC602E; }

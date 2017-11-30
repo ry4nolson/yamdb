@@ -14,13 +14,25 @@ class MoviesController < ApplicationController
 
   def show
     id = params[:id]
-    @movie = ApplicationHelper::get "movie/#{id}?append_to_response=reviews,videos,similar,images,credits"
-    
-    #puts @movie
+    @movie = ApplicationHelper::get "movie/#{id}?append_to_response=reviews,videos,similar,images,credits,release_dates"
   
     @hero = "https://image.tmdb.org/t/p/w1280#{@movie['backdrop_path']}"
     @poster = "https://image.tmdb.org/t/p/w500#{@movie['poster_path']}"
     @posterfull = "https://image.tmdb.org/t/p/original#{@movie['poster_path']}"
+    
+    @release_dates = @movie["release_dates"]
+    puts @release_dates
+    @us = @release_dates["results"].select { |release| release["iso_3166_1"] == "US" }.first["release_dates"] rescue []
+
+    puts @us
+    begin
+      if @us && @us.count > 0
+        @rating = @us.select { |r| r["certification"] && !r["certification"].empty? }
+        @rating = @rating.map { |r| r["certification"] }.join(", ")
+      end
+    rescue
+      @rating = ""
+    end
     
     credits = @movie["credits"]
     @cast = credits["cast"]
