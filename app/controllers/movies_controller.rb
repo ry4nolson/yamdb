@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     begin
       if @us && @us.count > 0
         @rating = @us.select { |r| r["certification"] && !r["certification"].empty? }
-        @rating = @rating.map { |r| r["certification"] }.join(", ")
+        @rating = @rating.map { |r| r["certification"] }.uniq.join(", ")
       end
     rescue
       @rating = ""
