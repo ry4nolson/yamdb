@@ -7,7 +7,7 @@ end %>
   <div class="hero-body" style="background:url(<%= @hero %>); background-size:cover;">
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="">
           <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
             <%= @movie["title"] %>
             <span class="has-text-weight-light year"><%= get_year @movie["release_date"] %></span>
@@ -52,6 +52,9 @@ end %>
           <li><a href="#media">Media</a></li>
           <li><a href="#reviews">Reviews</a></li>
         </ul>
+      </div>
+      <div class="social">
+        <div class="addthis_inline_share_toolbox"></div>
       </div>
       <div id="details" class="movie-section">
         <div class="rating">
