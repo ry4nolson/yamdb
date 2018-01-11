@@ -195,6 +195,7 @@ DEPENDENCIES
   dotenv
   exception_handler
   font-awesome-sass
+  http-cookie
   jbuilder (~> 2.0)
   jquery-rails
   json

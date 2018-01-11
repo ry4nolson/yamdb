@@ -30,6 +30,7 @@ gem 'simple-rss'
 gem 'rollbar'
 gem 'meta-tags'
 gem 'exception_handler'
+gem 'http-cookie'
 
 
 # Use ActiveModel has_secure_password
