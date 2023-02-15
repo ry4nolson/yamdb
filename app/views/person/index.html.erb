@@ -1,0 +1,59 @@
+<% content_for :title do 
+    if @list.count > 1
+    "People"
+  else
+    "Movies - #{@list[0]["heading"]}"
+  end
+end %>
+
+<% @list.each do |list| %>
+  <% if defined? list %>
+    <h3><%= list["heading"] %></h3>
+    <div class="<%= if @paging 
+    "people" 
+    else "people-slider"
+    end %>">
+      <% list['results'].each do |person| %>
+        <%= render partial: "shared/credittall", locals: {credit: person, width: 154} %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @paging %>
+
+<% if @list[0]["page"] < @list[0]["total_pages"] %>
+<div class="next-page">
+  <a href="<%= request.path + "?p=" + (@list[0]["page"] + 1).to_s %>">Next Page</a>
+</div>
+<% end %>
+
+<script>
+  $(".credit").each(function(i, el){
+    $el = $(el);
+    $el.wrap("<div class='col-6 col-sm-3'></div>");
+    
+    if (i % 4 == 0)
+      $(".people").append("<div class='row'></div>");
+      
+    $el.parent().appendTo(".people .row:last");
+    
+  });
+</script>
+
+<% else %>
+
+<script>
+  $(function(){
+    $(".people-slider").bxSlider({
+        minSlides: 2,
+        maxSlides: 10,
+        mode: 'horizontal',
+        slideWidth: 150,
+        slideMargin: 20,
+        pager: false
+    });
+  })
+</script>
+
+<% end %>

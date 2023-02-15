@@ -1,0 +1,6 @@
+<div class="review">
+  <blockquote>
+    <%= $markdown.render(review["content"]).html_safe %>
+    <cite>&mdash; <strong><%= review["author"] %></strong></cite>
+  </blockquote>
+</div>

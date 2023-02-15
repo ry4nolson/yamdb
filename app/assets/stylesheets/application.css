@@ -1,0 +1,185 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  background:#FDFDFD;
+}
+
+.hero {
+  width:100%; 
+  height:550px;
+  overflow:hidden;
+}
+.hero img { width:100%; }
+
+.navbar { border-bottom:2px solid #DC602E; padding:0; }
+.navbar, .navbar a { color:#503047; }
+.navbar a:hover { color:#000; text-decoration:none; }
+.navbar-brand { margin:0; }
+.navbar-link:after { border-color:#503047; }
+.navbar-dropdown a, .navbar-menu.is-active a { color:#503047; }
+.navbar-item.is-hoverable:hover .navbar-item .navbar-dropdown {
+  display:none;    
+}
+
+.navbar-item .navbar-item .navbar-link {
+  padding: 0;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.navbar-item .navbar-item .navbar-dropdown{
+  position: absolute;
+  top:0;
+  left:100%;
+  margin-left: -25px;
+}
+
+.navbar-item .navbar-item.is-hoverable:hover .navbar-dropdown{
+  display:block;
+}
+
+.search { width:100%; position: relative; border-bottom:2px solid #503047; }
+.search input { width:100%; font-size:24px; border:none; box-shadow:none; padding:0; }
+.search input:focus, .search button:focus, .search button:active { box-shadow:none !important; }
+.search button { position:absolute; top:0; right:0; height:100%; border:none; font-size:20px; }
+
+.bx-wrapper { box-shadow:none; border:none; }
+
+h3 { margin-top:20px; }
+
+footer { margin-top:30px; }
+
+.button.is-info { background:#503047; }
+
+.container { padding:0 15px; }
+
+.embed-container { margin-bottom:20px; }
+.embed-container img { width:100%; }
+a.youtube-video {position:relative; display: block; }
+.youtube-video img {width:100%; }
+
+.news-title a {
+  font-size:1em;
+  color:inherit;
+  font-weight:bold;
+  display: block;
+}
+
+.news-comments a {
+  font-size:0.75em;
+  color:inherit;
+  opacity: 0.75;
+  display: block;
+  margin-bottom:10px;
+}
+
+.no-image {
+  height:220px;
+  background:#eee;
+  text-align:center;
+  color:#666;
+  padding-top:30px;
+}
+
+.no-image i {
+  font-size:75px;
+  display:block;
+  margin:0 auto 30px;
+}
+
+.lity {
+  z-index: 999999 !important;
+}
+
+
+.row {
+  margin-left:-10px; margin-right:-10px;
+}
+
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.easy-autocomplete {
+  width: 100% !important;
+}
+.easy-autocomplete-container ul {
+    border: none;
+}
+
+.easy-autocomplete-container ul li {
+    border: none;
+    padding: 8px 14px;
+}
+
+.easy-autocomplete-container {
+    box-shadow: 0 9px 21px rgba(0,0,0,0.5);
+}
+
+.easy-autocomplete a {
+    color: #000;
+}
+
+.eac-item i {
+    width: 24px;
+}
+
+.easy-autocomplete-container ul li.selected {
+    background: #DC602E;
+}
+.easy-autocomplete-container ul li.selected a {
+    color:#fff;
+    text-decoration: none;
+}
+
+input::-webkit-input-placeholder { 
+  font-style: italic;
+}
+
+.movie-slider {
+  overflow-x:scroll;
+}
+.movie-slider .row {
+  width:400%;
+}
+
+.text-center { text-align:center; }
+.text-right { text-align:right;}
+
+.genre {
+  display: block;
+  text-align: center;
+  color: #fff;
+  background: #503047;
+  padding: 50px 0;
+  margin: 20px 0 0;
+  font-weight: bold;
+}
+
+.genre:hover {
+  color: #fff;
+  text-decoration: none;
+  background: #DC602E;
+}
+
+@media screen and (max-width: 768px)
+{
+  .navbar .container { padding:0; }
+  .movie-slider .row { width:700%; } 
+  .navbar-item.genres { width:100%; }
+}

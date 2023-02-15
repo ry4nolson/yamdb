@@ -1,0 +1,7 @@
+<div class="row">
+  <% $genres["tv"]["genres"].each do |genre| %>
+  <div class="col-6 col-sm-3">
+    <a class="genre" href="/tv/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a>
+  </div>
+  <% end %>
+</div>

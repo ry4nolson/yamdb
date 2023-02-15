@@ -1,0 +1,149 @@
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <%= image_tag "favicon-32x32.png" %>&nbsp;
+        <strong>YAMdb</strong>
+      </a>
+      <div class="navbar-burger burger" data-target="navbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/movies">
+            Movies
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <div class="navbar-item genres has-dropdown is-hoverable">
+              <a class="navbar-link" href="/movies/genres">
+                Genres
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <% $genres["movies"]["genres"].each do |genre| %>
+                <a class="navbar-item" href="/movies/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a>
+                <% end %>
+                <div style="clear:left;"></div>
+              </div>
+            </div>
+            <hr class="navbar-divider"> 
+            <a class="navbar-item" href="/movies/popular">
+              Popular
+            </a>
+            <a class="navbar-item" href="/movies/now_playing">
+              Now Playing
+            </a>
+            <a class="navbar-item" href="/movies/top_rated">
+              Top Rated
+            </a>
+            <a class="navbar-item" href="/movies/upcoming">
+              Upcoming
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/tv">
+            TV
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <div class="navbar-item genres has-dropdown is-hoverable">
+              <a class="navbar-link" href="/tv/genres">
+                Genres
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <% $genres["tv"]["genres"].each do |genre| %>
+                <a class="navbar-item" href="/tv/genre/<%= genre["id"] %>-<%= genre["name"] %>"><%= genre["name"] %></a>
+                <% end %>
+                <div style="clear:left;"></div>
+              </div>
+            </div>
+            <hr class="navbar-divider"> 
+            <a class="navbar-item" href="/tv/popular">
+              Popular
+            </a>
+            <a class="navbar-item" href="/tv/on_the_air">
+              Now Playing
+            </a>
+            <a class="navbar-item" href="/tv/top_rated">
+              Top Rated
+            </a>
+          </div>
+        </div>
+        <a class="navbar-item" href="/people">People</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="search">
+  <div class="container">
+    <form action="/search" method="GET">
+      <input class="input" type="text" name="q" placeholder="Find Movies, TV Shows, People...">
+      <button class="button">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+
+  $(document).off("click", ".navbar-burger").on("click", ".navbar-burger", function(el){
+    var $el = el.currentTarget;
+    // Get the target from the "data-target" attribute
+    var target = $el.dataset.target;
+    var $target = document.getElementById(target);
+    $($target).toggleClass('is-active');
+  });
+  
+  $(document).on("click", ".search button", function(){
+    if ($(".search input").val() === "")
+      return false;
+  });
+  
+  var options = {
+    url: function(phrase) { 
+      return "/search-autocomplete?q=" + phrase;    
+    },
+    getValue: function(result){
+      return (result.name || result.title);
+    },
+    template: {
+      type: "custom",
+      method: function(value, result)  {
+        var route = result.media_type;
+        var icon = "";
+        if (result.media_type == "movie"){
+          icon = "film";
+          route = "movies"
+        }
+        else if (result.media_type == "person")
+          icon = "user";
+        else
+          icon = result.media_type;
+          
+        console.log(result.release_date)
+          
+        return "<a href=/" + route + "/" + result.id + "><i class='fa fa-" + icon  + "'></i> " + value + "</a>";
+      }
+    },
+    ajaxSettings: {
+        dataType: "json"
+    },
+    list: {
+      maxNumberOfElements: 15
+    },
+    requestDelay: 200
+};
+
+$(".search input").easyAutocomplete(options);
+  
+  
+</script>

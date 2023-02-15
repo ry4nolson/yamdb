@@ -1,0 +1,65 @@
+<h1 class="is-size-1">Search results for: "<%= @q %>"</h1>
+
+<div class="tabs is-fullwidth">
+  <ul>
+    <li class="is-active"><a href="#movies">Movies (<%= @movies.count %>)</a></li>
+    <li><a href="#shows">TV Shows (<%= @shows.count %>)</a></li>
+    <li><a href="#people">People (<%= @people.count %>)</a></li>
+  </ul>
+</div>
+
+<div id="movies" class="search-results">
+  <% @movies.each_slice(4) do |results| %>
+    <div class="row">
+      <% results.each do |result| %>
+        <div class="col-6 col-sm-3">
+          <%= render partial: "shared/poster", locals: { item: result, width: 154, type: "movie" } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="shows" class="search-results">
+  <% @shows.each_slice(4) do |results| %>
+    <div class="row">
+      <% results.each do |result| %>
+        <div class="col-6 col-sm-3">
+          <%= render partial: "shared/poster", locals: { item: result, width: 154, type: "tv" } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div id="people" class="search-results">
+  <% @people.each_slice(4) do |results| %>
+    <div class="row">
+      <% results.each do |result| %>
+        <div class="col-6 col-sm-3">
+          <%= render partial: "shared/credittall", locals: { credit: result, width: 154 } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+  $(document).on("click", ".tabs a", function(e){
+    $link = $(e.currentTarget);
+    $link.closest("ul").find("li").removeClass("is-active");
+    $link.parent().addClass("is-active");
+    $(".search-results").hide();
+    $($link.attr("href")).show();
+
+    e.preventDefault();
+  });
+  $(function(){
+    if (location.hash){
+      $(".tabs a[href=\\" + location.hash +"]").click();
+    } else {
+      $(".tabs a:first").click();
+    }
+  })
+</script>

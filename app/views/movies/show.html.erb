@@ -1,0 +1,223 @@
+<% content_for :title do 
+  raw(@movie["title"] || @movie["original_title"])
+end %>
+
+<% content_for :hero do %>
+<section class="hero is-success">
+  <div class="hero-body" style="background:url(<%= @hero %>); background-size:cover;">
+    <div class="container">
+      <div class="row">
+        <div class="">
+          <h1 class="is-size-1 is-size-3-mobile has-text-weight-bold">
+            <%= @movie["title"] %>
+            <span class="has-text-weight-light year"><%= get_year @movie["release_date"] %></span>
+          </h1>
+          <h2 class="subtitle"><%= @movie["tagline"] %></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>
+
+<section class="movie-info" itemscope itemtype="http://schema.org/Movie">
+  <meta itemprop="name" content="<%= @movie["title"] || @movie["original_title"] %>">
+  <meta itemprop="description" content="<%= @movie["tagline"] %>">
+  <div class="row justify-content-center">
+    <div class="col-6 col-sm-4">
+      <div class="movie-poster embed-container">
+        <a href="<%= @posterfull %>" data-lity>
+          <img src="<%= @poster %>" alt="<%= @movie['title'] %>">
+        </a>
+      </div>
+      <div class="similar is-hidden-mobile">
+        <h4 class="is-size-4">Similar Movies</h4>
+        <% @similar["results"].take(12).each_slice(3) do |similars| %>
+          <div class="row">
+            <% similars.each do |movie| %>
+              <div class="col-sm-4 embed-container">
+                <%= render partial: "shared/poster", locals: { item: movie, width: 92, type: "movie" } %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>  
+    </div>
+    <div class="col-sm">
+      <div class="tabs is-fullwidth">
+        <ul>
+          <li><a href="#details">Details</a></li>
+          <li><a href="#cast">Cast</a></li>
+          <li><a href="#crew">Crew</a></li>
+          <li><a href="#media">Media</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="social">
+        <div class="addthis_inline_share_toolbox"></div>
+      </div>
+      <div id="details" class="movie-section">
+        <div class="rating">
+          <div class="row">
+            <div class="col-sm-6">
+              <span class="is-size-3"><%= @movie["vote_average"] %></span> <span class="is-size-4">/ 10</span>
+              &nbsp; <%= @movie["vote_count"] %> vote(s)
+            </div>
+            <div class="col-sm-6 text-right">
+              <span class="movie-rating"><%= @rating %></span>
+            </div>
+          </div>
+          
+        </div>
+        <div class="genres">
+          <% @movie["genres"].each do |genre| %>
+            <span class="tag"><%= genre["name"] %></span>
+          <% end %>
+        </div>
+        <div class="overview">
+          <p><%= @movie["overview"] %></p>
+        </div>
+        <div class="top-cast">
+          <h3>Top Billed Cast</h3>
+          <div class="row">
+            <% @cast.take(6).each do |cast| %>
+              <div class="col-4 col-sm">
+                <%= render partial: "shared/credittall", locals: { credit: cast, width: 185 } %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="details">
+          <table class="table">
+            <% if !@movie["homepage"].empty? %>
+            <tr>
+              <th>Homepage</th>
+              <td><a href="<%= @movie["homepage"] %>" target="_blank"><%= @movie["homepage"] %></a></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th>Release Date</th>
+              <td><%= @movie["release_date"] %></td>
+            </tr>
+            <% if !@movie["runtime"].nil? %>
+            <tr>
+              <th>Runtime</th>
+              <td><%= format_time @movie["runtime"] %></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th>Director<%= "s" if @director.count > 1 %></th>
+              <td><%= @director.join ", " %></td>
+            </tr>
+            <tr>
+              <th>Producer<%= "s" if @producer.count > 1 %></th>
+              <td><%= @producer.join ", " %></td>
+            </tr>
+            <tr>
+              <th>Writer<%= "s" if @writer.count > 1 %></th>
+              <td><%= @writer.join ", " %></td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="videos">
+          <% @videos["results"].each_slice(2) do |videos| %>
+            <div class="row is-mobile">
+              <% videos.each do |video| %>
+                <div class="col-sm-6">
+                  <%= render partial: "shared/video", locals: { video: video } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="cast" class="movie-section">
+        <div>
+          <% @cast.each_slice(2) do |people| %>
+            <div class="row is-mobile">
+              <% people.each do |cast| %>
+                <div class="col-sm-6">
+                  <%= render partial: "shared/credit", locals: { credit: cast } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="crew" class="movie-section">
+        <div>
+          <% @crew.each_slice(2) do |people| %>
+            <div class="row is-mobile">
+              <% people.each do |crew| %>
+                <div class="col-sm-6">
+                  <%= render partial: "shared/credit", locals: { credit: crew } %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="media" class="movie-section">
+        
+        <div class="backdrops">
+          <% @images["backdrops"].each_slice(2) do |images| %>
+            <div class="row is-mobile">
+              <% images.each do |image| %>
+                <div class="col-6">
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w780/#{image["file_path"]}" %>
+                    </a>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <% @images["posters"].each_slice(3) do |images| %>
+            <div class="row is-mobile">
+              <% images.each do |image| %>
+                <div class="col-4">
+                  <div class="embed-container">
+                    <a href="https://image.tmdb.org/t/p/original/<%= image["file_path"] %>" data-lity>
+                      <%= image_tag "https://image.tmdb.org/t/p/w342/#{image["file_path"]}" %>
+                    </a>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div id="reviews" class="movie-section">
+        <% @reviews["results"].each do |review| %>
+          <%= render partial: "shared/review", locals: { review: review } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).on("click", ".tabs a", function(e){
+    $link = $(e.currentTarget);
+    $link.closest("ul").find("li").removeClass("is-active");
+    $link.parent().addClass("is-active");
+    $(".movie-section").hide();
+    $($link.attr("href")).show();
+    
+    // if (history.pushState)
+    //   history.pushState(null, null, $link.attr("href"))
+    // else
+    //   location.hash = $link.attr("href");
+    
+    e.preventDefault();
+  });
+  $(function(){
+    if (location.hash){
+      $(".tabs a[href=\\" + location.hash +"]").click();
+    } else {
+      $(".tabs a:first").click();
+    }
+  })
+</script>

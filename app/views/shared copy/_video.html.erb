@@ -1,0 +1,9 @@
+<div class='embed-container'>
+  <% case video["site"] %>
+  <% when "YouTube" %>
+  <a class="youtube-video" href="https://www.youtube.com/embed/<%= video["key"] %>" data-lity>
+    <i class="fa fa-youtube-play" aria-hidden="true"></i>
+    <img src="http://img.youtube.com/vi/<%= video["key"] %>/sddefault.jpg">
+  </a>
+  <% end %>
+</div>

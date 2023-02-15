@@ -1,0 +1,17 @@
+
+  <div class="movie embed-container">
+    <% #puts item %>
+    <a href="<%= if type == "movie" 
+      MoviesController::pretty_url item 
+      else TvController::pretty_url item
+      end%>">
+      <% if !item["poster_path"].nil? %>
+      <img alt="<%= item['title'] || item['original_title'] || item['name'] %>" src="https://image.tmdb.org/t/p/w<%= width %>/<%= item['poster_path'] %>" class="poster">
+      <% else %>
+      <div class="no-image">
+        <i class="fa fa-film" aria-hidden="true"></i>
+        <%= item['title'] %>
+      </div>
+      <% end %>
+    </a>
+  </div>

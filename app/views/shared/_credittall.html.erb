@@ -1,0 +1,25 @@
+<div class="credit credit-tall embed-container">
+  <a href="/person/<%= credit["id"] %>">
+    <% if !credit["profile_path"].nil? %>
+    <%= image_tag "https://image.tmdb.org/t/p/w#{width}#{credit["profile_path"]}" if credit["profile_path"] %>
+    <div class="credit-name">
+      <p class="is-size-6"><%= credit["name"] %></p>
+      <p class="is-size-7">
+        <%= credit["character"] %>
+        <%= credit["job"] %>
+      </p>
+    </div>
+    <% else %>
+    <div class="no-image">
+      <i class="fa fa-user" aria-hidden="true"></i>
+      <div class="credit-name">
+        <p class="is-size-6"><%= credit["name"] %></p>
+        <p class="is-size-7">
+          <%= credit["character"] %>
+          <%= credit["job"] %>
+        </p>
+      </div>
+    </div>
+    <% end %>
+  </a>
+</div>

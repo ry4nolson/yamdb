@@ -1,0 +1,69 @@
+
+<div class="row">
+  <div class="col-sm-9">
+    <h3>Popluar Movies</h3>
+    <div class="movie-slider">
+      <div class="row">
+        <% @popular["results"].each do |movie| %>
+          <% #movies.each do |movie| %>
+            <div class="col">
+              <%= render partial: "shared/poster", locals: { item: movie, width: 154, type: "movie" } %>
+            </div>
+          <% #end %>
+        <% end %>
+      </div>
+    </div>
+    
+    <h3>In Theatres Now</h3>
+    <div class="movie-slider">
+      <div class="row">
+        <% @now_playing["results"].each do |movie| %>
+          <div class="col">
+            <%= render partial: "shared/poster", locals: { item: movie, width: 154, type: "movie" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <h3>Popular TV Shows</h3>
+    <div class="movie-slider">
+      <div class="row">
+        <% @popular_tv["results"].each do |show| %>
+          <div class="col">
+            <%= render partial: "shared/poster", locals: { item: show, width: 154, type: "tv" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <h3>TV Shows On The Air</h3>
+    <div class="movie-slider">
+      <div class="row">
+        <% @on_the_air["results"].each do |show| %>
+          <div class="col">
+            <%= render partial: "shared/poster", locals: { item: show, width: 154, type: "tv" } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <h3 class="is-uppercase">/r/Movies news</h3>
+    <hr>
+    <% @rmovies["data"]["children"][0...5].each do |item| %>
+        <div class="news">
+          <div class="news-title"><a <%= lity item["data"]["url"] %> href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
+        </div>
+    <% end %>
+    <h3 class="is-uppercase">/r/TV news</h3>
+    <hr>
+    <% @rtelevision["data"]["children"][0...5].each do |item| %>
+        <div class="news">
+          <div class="news-title"><a <%= lity item["data"]["url"] %> href="<%= item["data"]["url"] %>" target="_blank"><%= item["data"]["title"] %></a></div>
+          <div class="news-comments"><a href="https://reddit.com/<%= item["data"]["permalink"] %>" target="_blank"><%= item["data"]["num_comments"] %> comment(s)</a></div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
