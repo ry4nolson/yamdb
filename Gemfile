@@ -9,9 +9,6 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-#gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -30,22 +27,6 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-
-gem 'rest-client'
-gem 'json'
-gem 'dotenv'
-gem 'font-awesome-sass'
-gem 'redcarpet'
-gem 'simple-rss'
-gem 'rollbar'
-gem 'meta-tags'
-gem 'exception_handler'
-gem 'http-cookie'
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -59,10 +40,21 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+# Use CoffeeScript for .coffee assets and views
+gem 'coffee-rails'
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'rest-client'
+gem 'json'
+gem 'dotenv'
+gem 'font-awesome-sass'
+gem 'redcarpet'
+gem 'simple-rss'
+gem 'rollbar'
+gem 'meta-tags'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

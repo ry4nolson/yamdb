@@ -5,6 +5,7 @@ require "rails"
 %w(
   action_controller/railtie
   action_view/railtie
+  active_job/railtie
 ).each do |railtie|
   begin
     require railtie
@@ -28,7 +29,5 @@ module Yamdb
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    VERSION =`git --git-dir="#{Rails.root.join(".git")}" --work-tree="#{Rails.root}" log -1 --date=short --format="%ad-%h"|sed 's/-/./g'`
   end
 end
